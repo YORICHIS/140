@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>140</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="140: إحصائيات فوق اللعبة، مترجم شاشة بدون إنترنت، علامة تصويب بإعدادات Marvel Rivals، وشخصيات بموسيقاها. لويندوز.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Readex+Pro:wght@300;400;500;700&family=Teko:wght@500;600;700&display=swap">
+<style>
+/* Layout: a manga page in the selected character's ink. Full-bleed bands, each with its own
+   inner gutter; the hero is the app's own launch moment. Picking a character re-inks the page. */
+:root {
+  --paper: #08080a;                    /* the page, like the app's paper */
+  --ink: #ffffff;                      /* every line, letter and plate */
+  --ink-2: color-mix(in srgb, var(--ink) 68%, var(--paper));
+  --ink-3: color-mix(in srgb, var(--ink) 42%, var(--paper));
+  --line: color-mix(in srgb, var(--ink) 16%, var(--paper));
+  --plate: color-mix(in srgb, var(--ink) 6%, var(--paper));
+  --game-sky: #74899e; --game-ground: #45403b; --game-wall: #ccc2ad;   /* the stand-in game scene */
+  --display-ar: "Lalezar", "Readex Pro", "Segoe UI", Tahoma, sans-serif;
+  --display-en: "Teko", "Arial Narrow", Impact, sans-serif;
+  --body: "Readex Pro", "Segoe UI", Tahoma, system-ui, sans-serif;
+  --max: 1160px;
+  color-scheme: dark;
+}
+:root[data-light] { color-scheme: light; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.7 var(--body); overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+html[lang="ar"] [data-l="en"], html[lang="en"] [data-l="ar"] { display: none !important; }
+.wrap { max-width: var(--max); margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; line-height: 1.15; text-wrap: balance; font-weight: 400; }
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { font-family: var(--display-ar); }
+html[lang="en"] h1, html[lang="en"] h2, html[lang="en"] h3 { font-family: var(--display-en); font-weight: 600; letter-spacing: .01em; line-height: 1; }
+p { margin: 0; max-width: 62ch; }
+.eyebrow { font: 500 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); display: flex; align-items: center; gap: 10px; }
+.eyebrow::before { content: ""; width: 26px; height: 3px; background: var(--ink); transform: skewX(-24deg); }
+.num { font-family: var(--display-en); font-variant-numeric: tabular-nums; }
+
+/* ---------- header ---------- */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; align-items: center; gap: 20px; padding-block: 10px; }
+.logo { font: 700 34px/1 var(--display-en); font-style: italic; text-decoration: none; letter-spacing: -.01em; position: relative; padding-bottom: 4px; }
+.logo::after { content: ""; position: absolute; inset-inline: -4px 6px; bottom: 0; height: 3px; background: var(--ink); transform: skewX(-30deg); }
+nav.links { display: flex; gap: 18px; margin-inline-start: auto; font-size: 14px; }
+nav.links a { text-decoration: none; color: var(--ink-2); }
+nav.links a:hover { color: var(--ink); }
+.lang { display: flex; border: 1.5px solid var(--ink-3); border-radius: 6px; overflow: hidden; }
+.lang button { all: unset; cursor: pointer; padding: 3px 10px; font: 500 13px/1.4 var(--body); color: var(--ink-2); }
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+@media (max-width: 760px) { nav.links { display: none; } .lang { margin-inline-start: auto; } }
+
+/* ---------- the download plate (the app's LAUNCH button) ---------- */
+.plate { --cut: 18px; display: inline-flex; align-items: center; gap: 14px; text-decoration: none; background: var(--ink); color: var(--paper);
+  padding: 16px 38px; clip-path: polygon(var(--cut) 0, 100% 0, calc(100% - var(--cut)) 100%, 0 100%); transition: transform .18s ease, filter .18s ease; cursor: pointer; border: 0; }
+.plate:hover { transform: translateY(-2px) scale(1.02); filter: brightness(1.08); }
+.plate:active { transform: translateY(1px) scale(.99); }
+.plate b { font: 400 26px/1 var(--display-ar); }
+html[lang="en"] .plate b { font: 600 30px/1 var(--display-en); letter-spacing: .03em; }
+.plate svg { width: 22px; height: 22px; flex: none; }
+.plate.small { --cut: 10px; padding: 7px 18px; }
+.plate.small b { font-size: 16px; }
+html[lang="en"] .plate.small b { font-size: 19px; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--ink-2); }
+
+/* ---------- hero ---------- */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+#fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 40px; align-items: center; padding-block: 56px 64px; }
+.hero h1 { font-size: clamp(42px, 6.4vw, 78px); }
+html[lang="en"] .hero h1 { font-size: clamp(52px, 7.6vw, 96px); }
+.hero .lead { font-size: 18px; color: var(--ink-2); margin-top: 18px; }
+.hero .cta { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 30px; }
+.big140 { font: 700 clamp(90px, 15vw, 190px)/.8 var(--display-en); font-style: italic; letter-spacing: -.03em; animation: land 1s cubic-bezier(.2,.8,.2,1) both; display: inline-block; }
+@keyframes land { 0% { transform: scale(1.3); opacity: 0; } 40% { opacity: 1; } 100% { transform: scale(1); } }
+.slash { position: absolute; inset: 0; pointer-events: none; }
+.slash i { position: absolute; left: -10%; top: 62%; width: 120%; height: 10px; background: var(--ink); transform-origin: 0 50%; transform: rotate(-11deg) scaleX(0); animation: cut .5s .55s cubic-bezier(.6,0,.2,1) forwards, fade .9s 1.2s ease forwards; }
+@keyframes cut { to { transform: rotate(-11deg) scaleX(1); } }
+@keyframes fade { to { opacity: 0; height: 1px; } }
+/* A new character: one ink stroke crosses the screen as the page re-inks. */
+.recut { position: fixed; inset: 0; pointer-events: none; z-index: 20; overflow: hidden; }
+.recut i { position: absolute; left: -10%; top: 50%; width: 120%; height: 14px; background: var(--ink); transform-origin: 0 50%; transform: rotate(-11deg) scaleX(0); animation: cut .32s cubic-bezier(.6,0,.2,1) forwards, fade .5s .32s ease forwards; }
+.shot { position: relative; border: 1.5px solid var(--line); background: var(--plate); box-shadow: 14px 14px 0 -2px var(--line); }
+.shot img { width: 100%; aspect-ratio: 1200 / 640; object-fit: cover; }
+.hero .shot { transform: rotate(-1.4deg); animation: rise .9s .25s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes rise { from { transform: rotate(-1.4deg) translateY(24px); } to { transform: rotate(-1.4deg); } }
+.pick { margin-top: 26px; }
+.pick .eyebrow { margin-bottom: 10px; }
+.chars { display: flex; flex-wrap: wrap; gap: 8px; }
+.chars button { all: unset; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 6px 12px 6px 8px; border: 1.5px solid var(--line); font: 500 17px/1 var(--display-en); letter-spacing: .08em; }
+.chars button i { width: 18px; height: 18px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 2px var(--p), 0 0 0 3.5px var(--ink-3); }
+.chars button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--paper); }
+.chars button:hover:not([aria-pressed="true"]) { border-color: var(--ink-2); }
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; padding-block: 36px 48px; } }
+
+/* ---------- bands and features ---------- */
+section.band { border-bottom: 1px solid var(--line); }
+section.band > .wrap { padding-block: 72px; display: grid; gap: 34px; }
+.band h2 { font-size: clamp(32px, 4.4vw, 50px); }
+html[lang="en"] .band h2 { font-size: clamp(40px, 5.4vw, 64px); }
+.band .intro { display: grid; gap: 14px; }
+.band .intro p { color: var(--ink-2); font-size: 17px; }
+.six { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1.5px solid var(--ink); }
+.six a { text-decoration: none; padding: 22px 22px 26px; border-bottom: 1px solid var(--line); border-inline-end: 1px solid var(--line); display: grid; gap: 8px; align-content: start; transition: background .2s; }
+.six a:nth-child(3n) { border-inline-end: 0; }
+.six a:hover { background: var(--plate); }
+.six h3 { font-size: 24px; }
+html[lang="en"] .six h3 { font-size: 30px; }
+.six p { color: var(--ink-2); font-size: 15px; }
+.six svg { width: 30px; height: 30px; stroke: var(--ink); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 860px) { .six { grid-template-columns: 1fr 1fr; } .six a:nth-child(3n) { border-inline-end: 1px solid var(--line); } .six a:nth-child(2n) { border-inline-end: 0; } }
+@media (max-width: 520px) { .six { grid-template-columns: 1fr; } .six a { border-inline-end: 0 !important; } }
+
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 44px; align-items: center; }
+.split.flip > :first-child { order: 2; }
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; } .split.flip > :first-child { order: 0; } }
+.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ticks li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; color: var(--ink-2); }
+.ticks li::before { content: ""; width: 12px; height: 3px; background: var(--ink); transform: skewX(-24deg) translateY(-4px); }
+.ticks b { color: var(--ink); font-weight: 500; }
+
+/* stats bar sample: the real overlay, over a stand-in game */
+.game { position: relative; aspect-ratio: 16 / 9; max-width: 100%; overflow: hidden; border: 1.5px solid var(--line);
+  background: linear-gradient(var(--game-sky) 0 58%, var(--game-ground) 58% 100%); }
+.game::before { content: ""; position: absolute; inset-inline-start: 52%; top: 30%; width: 22%; height: 28%; background: var(--game-wall); }
+.osd { position: absolute; top: 12px; left: 12px; direction: ltr; display: flex; align-items: center; gap: 12px; padding: 7px 14px 7px 8px; background: rgba(0,0,0,.72); color: #fff; border-radius: 4px; font: 500 13px/1 var(--body); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.osd .face { width: 26px; height: 26px; border-radius: 50%; background: var(--ink); }
+.osd b { font: 600 22px/1 var(--display-en); }
+.osd small { opacity: .65; font-size: 10px; letter-spacing: .08em; }
+@media (max-width: 520px) { .osd { transform: scale(.78); transform-origin: top left; } }
+
+/* translator sample */
+.tr .game { width: 100%; display: grid; place-items: center; }
+.tr .box { position: absolute; inset: 22% 14%; border: 2px dashed rgba(255,255,255,.75); }
+.tr .text { position: relative; z-index: 1; text-align: center; padding: 14px 22px; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.7); min-width: 60%; }
+.tr .en { font: 600 clamp(26px, 4vw, 40px)/1 var(--display-en); letter-spacing: .04em; direction: ltr; }
+.tr .en small { display: block; font: 400 14px/1.6 var(--body); letter-spacing: 0; margin-top: 6px; }
+.tr .ar { position: absolute; inset: 0; display: grid; place-content: center; background: #0b0b0d; color: #fff; direction: rtl; font: 400 clamp(26px, 4vw, 38px)/1.3 var(--display-ar); clip-path: inset(0 0 100% 0); animation: wipe 3.6s ease-in-out infinite; }
+.tr .ar small { display: block; font: 400 15px/1.6 var(--body); }
+@keyframes wipe { 0%, 8% { clip-path: inset(0 0 100% 0); } 22%, 78% { clip-path: inset(0 0 0 0); } 92%, 100% { clip-path: inset(100% 0 0 0); } }
+
+/* crosshair designer */
+.xh { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 28px; align-items: start; }
+@media (max-width: 760px) { .xh { grid-template-columns: 1fr; } }
+#xc { width: 100%; max-width: 300px; aspect-ratio: 1; border: 1.5px solid var(--line); display: block; }
+.xh label { font-size: 13px; color: var(--ink-2); }
+.xh textarea { width: 100%; min-height: 96px; resize: vertical; direction: ltr; background: var(--plate); color: var(--ink); border: 1.5px solid var(--line); padding: 10px 12px; font: 400 13px/1.5 ui-monospace, Consolas, monospace; overflow-wrap: anywhere; }
+.xh textarea:focus { border-color: var(--ink); outline: none; }
+.status { font-size: 13px; color: var(--ink-2); min-height: 1.6em; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips button { all: unset; cursor: pointer; padding: 5px 12px; border: 1.5px solid var(--ink-3); border-radius: 999px; font-size: 13px; }
+.chips button:hover { border-color: var(--ink); }
+.read { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px 18px; font-size: 13px; color: var(--ink-2); }
+.read span b { color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; }
+
+/* characters and launches */
+.cast { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.cast button { all: unset; cursor: pointer; padding: 14px 12px; border: 1.5px solid var(--line); background: var(--p); color: var(--c); display: grid; gap: 4px; transition: transform .2s; }
+.cast button:hover { transform: translateY(-3px); }
+.cast button[aria-pressed="true"] { outline: 2.5px solid var(--ink); outline-offset: 2px; }
+.cast b { font: 600 26px/1 var(--display-en); letter-spacing: .06em; }
+.cast small { font-size: 12px; opacity: .8; }
+@media (max-width: 760px) { .cast { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.reel { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+.reel figure { margin: 0; flex: 0 0 min(300px, 72vw); scroll-snap-align: start; display: grid; gap: 6px; }
+.reel img { aspect-ratio: 1200 / 640; object-fit: cover; border: 1.5px solid var(--line); }
+.reel figcaption { font-size: 12px; color: var(--ink-2); }
+
+/* tools list */
+.tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); border-top: 1.5px solid var(--ink); }
+.tools div { padding: 16px 0; border-bottom: 1px solid var(--line); display: grid; gap: 4px; padding-inline-end: 18px; }
+.tools b { font-weight: 500; }
+.tools span { font-size: 14px; color: var(--ink-2); }
+
+/* install: three real steps, in order */
+ol.steps { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; counter-reset: s; }
+.steps li { list-style: none; counter-increment: s; border-top: 1.5px solid var(--ink); padding-top: 14px; display: grid; gap: 8px; align-content: start; }
+.steps li::before { content: counter(s); font: 700 44px/1 var(--display-en); font-style: italic; }
+.steps p { color: var(--ink-2); font-size: 15px; }
+@media (max-width: 760px) { ol.steps { grid-template-columns: 1fr; } }
+.faq { display: grid; border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); padding: 14px 0; }
+.faq summary { cursor: pointer; font-weight: 500; list-style: none; display: flex; justify-content: space-between; gap: 14px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font: 600 22px/1 var(--display-en); }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { color: var(--ink-2); margin-top: 8px; font-size: 15px; }
+.req { display: flex; flex-wrap: wrap; gap: 8px; }
+.req span { border: 1px solid var(--line); padding: 4px 10px; font-size: 13px; color: var(--ink-2); }
+.final { display: grid; justify-items: center; text-align: center; gap: 16px; }
+.final .big140 { animation: none; font-size: clamp(80px, 12vw, 140px); }
+
+footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: space-between; font-size: 12px; color: var(--ink-3); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .slash { display: none; }
+  .tr .ar { clip-path: inset(0 0 0 0); }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top">140</a>
+    <nav class="links">
+      <a href="#features"><span data-l="ar">الميزات</span><span data-l="en">Features</span></a>
+      <a href="#crosshair"><span data-l="ar">علامة التصويب</span><span data-l="en">Crosshair</span></a>
+      <a href="#characters"><span data-l="ar">الشخصيات</span><span data-l="en">Characters</span></a>
+      <a href="#install"><span data-l="ar">التثبيت</span><span data-l="en">Install</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="lang-ar" aria-pressed="true">ع</button>
+      <button type="button" id="lang-en" aria-pressed="false">EN</button>
+    </div>
+    <a class="plate small" data-download href="140.exe"><b><span data-l="ar">تحميل</span><span data-l="en">DOWNLOAD</span></b></a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div class="slash" aria-hidden="true"><i></i></div>
+  <div class="wrap">
+    <div>
+      <span class="big140">140</span>
+      <h1>
+        <span data-l="ar">رفيقك فوق اللعبة.</span>
+        <span data-l="en">YOUR COMPANION OVER THE GAME.</span>
+      </h1>
+      <p class="lead" data-l="ar">إحصائيات جهازك وأنت تلعب، مترجم يحوّل كلام اللعبة للعربي بدون إنترنت، علامة تصويب بنفس إعدادات Marvel Rivals، وشخصيات لها ألوانها وموسيقاها. كله في برنامج واحد خفيف ما يلمس اللعبة.</p>
+      <p class="lead" data-l="en">Live PC stats while you play, a screen translator that turns game text into Arabic offline, a crosshair with the exact Marvel Rivals settings, and characters with their own colours and music. One light app that never touches the game.</p>
+      <div class="cta">
+        <a class="plate" data-download href="140.exe">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13M6 11l6 6 6-6M4 21h16"/></svg>
+          <b><span data-l="ar">تحميل لويندوز</span><span data-l="en">DOWNLOAD FOR WINDOWS</span></b>
+        </a>
+        <div class="facts">
+          <span><span data-l="ar">مجاني</span><span data-l="en">Free</span></span>
+          <span>·</span><span class="num">140.exe</span>
+          <span>·</span><span><span class="num">180</span> <span data-l="ar">ميقا</span><span data-l="en">MB</span></span>
+          <span>·</span><span><span data-l="ar">ويندوز 10 و 11</span><span data-l="en">Windows 10 and 11</span></span>
+        </div>
+      </div>
+      <div class="pick">
+        <div class="eyebrow"><span data-l="ar">اختر شخصيتك، والصفحة تاخذ لونها</span><span data-l="en">Pick a character and the page takes its ink</span></div>
+        <div class="chars" id="chars"></div>
+      </div>
+    </div>
+    <div class="shot">
+      <img data-l="ar" src="img/ar-home.jpg" alt="الصفحة الرئيسية في 140" width="1200" height="640">
+      <img data-l="en" src="img/en-home.jpg" alt="The 140 home page" width="1200" height="640">
+    </div>
+  </div>
+</section>
+
+<section class="band" id="features">
+  <div class="wrap">
+    <div class="intro">
+      <div class="eyebrow"><span data-l="ar">داخل البرنامج</span><span data-l="en">Inside the app</span></div>
+      <h2><span data-l="ar">ستة أشياء في ملف واحد</span><span data-l="en">SIX THINGS IN ONE FILE</span></h2>
+    </div>
+    <div class="six">
+      <a href="#overlay">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l5-6 4 3 4-6 5 5"/><path d="M3 21h18"/></svg>
+        <h3><span data-l="ar">الإحصائيات فوق اللعبة</span><span data-l="en">STATS OVERLAY</span></h3>
+        <p data-l="ar">الفريمات، زمن الإطار، كرت الشاشة والمعالج وحرارتهم، في شريط صغير أو بطاقة.</p>
+        <p data-l="en">FPS, frame time, GPU and CPU load and heat, as a small bar or a card.</p>
+      </a>
+      <a href="#translator">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 6 8M11 5c0 4-3 7-7 9"/><path d="M14 21l4-10 4 10M15.5 18h5"/></svg>
+        <h3><span data-l="ar">مترجم الشاشة</span><span data-l="en">SCREEN TRANSLATOR</span></h3>
+        <p data-l="ar">يقرأ الإنجليزي في اللعبة ويكتب العربي مكانه، على جهازك وبدون إنترنت.</p>
+        <p data-l="en">Reads the English in the game and writes the Arabic in its place, on your PC, offline.</p>
+      </a>
+      <a href="#crosshair">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 2v5M12 17v5M2 12h5M17 12h5"/></svg>
+        <h3><span data-l="ar">علامة التصويب</span><span data-l="en">CROSSHAIR</span></h3>
+        <p data-l="ar">نفس إعدادات Marvel Rivals ونفس الكود، وتشتغل فوق أي لعبة.</p>
+        <p data-l="en">The same settings and the same code as Marvel Rivals, over any game.</p>
+      </a>
+      <a href="#characters">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+        <h3><span data-l="ar">الشخصيات</span><span data-l="en">CHARACTERS</span></h3>
+        <p data-l="ar">خمس شخصيات، لكل وحدة ألوانها وأصواتها وموسيقاها وحركة تشغيل خاصة فيها.</p>
+        <p data-l="en">Five characters, each with its own colours, sounds, music and launch scene.</p>
+      </a>
+      <a href="#tools">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.4-2.4z"/></svg>
+        <h3><span data-l="ar">أدوات النظام</span><span data-l="en">SYSTEM TOOLS</span></h3>
+        <p data-l="ar">تعزيز اللعب، برامج بدء التشغيل، تنظيف الملفات المؤقتة، وفحص الشبكة.</p>
+        <p data-l="en">Game boost, startup apps, temp clean-up and a network check.</p>
+      </a>
+      <a href="#install">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+        <h3><span data-l="ar">خفيف وما يلمس اللعبة</span><span data-l="en">LIGHT, HANDS OFF</span></h3>
+        <p data-l="ar">نوافذ عادية فوق الشاشة. ما يحقن شيء في اللعبة ولا يقرأ ذاكرتها.</p>
+        <p data-l="en">Plain windows over the screen. Nothing is injected and no game memory is read.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="overlay">
+  <div class="wrap split">
+    <div class="intro">
+      <div class="eyebrow"><span data-l="ar">الإحصائيات</span><span data-l="en">Stats overlay</span></div>
+      <h2><span data-l="ar">اعرف وش يصير في جهازك وأنت تلعب</span><span data-l="en">SEE WHAT YOUR PC IS DOING MID-GAME</span></h2>
+      <ul class="ticks" data-l="ar">
+        <li><span><b>الفريمات</b> وأدنى 1% وزمن الإطار بالملي ثانية.</span></li>
+        <li><span><b>كرت الشاشة:</b> الاستخدام، الحرارة، التردد، الطاقة، المروحة والـ VRAM.</span></li>
+        <li><span><b>المعالج والذاكرة:</b> الاستخدام والحرارة والتردد.</span></li>
+        <li><span>تختار وش يظهر، وتحطه في أي زاوية أو تسحبه بالماوس.</span></li>
+        <li><span>زر واحد يخفيه ويظهره من داخل اللعبة، ويختفي لحاله خارج الألعاب.</span></li>
+      </ul>
+      <ul class="ticks" data-l="en">
+        <li><span><b>FPS,</b> 1% low and frame time in milliseconds.</span></li>
+        <li><span><b>GPU:</b> load, temperature, clock, power, fan and VRAM.</span></li>
+        <li><span><b>CPU and RAM:</b> load, temperature and clock.</span></li>
+        <li><span>Pick what shows, put it in any corner or drag it with the mouse.</span></li>
+        <li><span>One key hides it from inside the game, and it hides itself outside games.</span></li>
+      </ul>
+    </div>
+    <div class="game" role="img" aria-label="A sample of the stats bar over a game">
+      <div class="osd">
+        <span class="face"></span>
+        <span><b id="o-fps">144</b> <small>FPS</small></span>
+        <span><span id="o-low">121</span> <small>1% LOW</small></span>
+        <span><span id="o-ms">6.9</span> <small>MS</small></span>
+        <span><span id="o-gpu">62</span>% <small>GPU</small> <span id="o-gt">64</span>°</span>
+        <span><span id="o-cpu">23</span>% <small>CPU</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="translator">
+  <div class="wrap split flip">
+    <div class="intro">
+      <div class="eyebrow"><span data-l="ar">مترجم الشاشة</span><span data-l="en">Screen translator</span></div>
+      <h2><span data-l="ar">اللعبة بالإنجليزي؟ اقرأها بالعربي</span><span data-l="en">GAME IN ENGLISH? READ IT IN ARABIC</span></h2>
+      <ul class="ticks" data-l="ar">
+        <li><span><b>بدون إنترنت:</b> نموذج الترجمة داخل البرنامج، ونص شاشتك ما يطلع من جهازك.</span></li>
+        <li><span><b>مربعات التركيز:</b> ترسم مربعات على أماكن النص، ويترجم داخلها بس.</span></li>
+        <li><span>زر تشغيل وإيقاف من داخل اللعبة، وزر لرسم المربعات.</span></li>
+        <li><span>العربي مخفي عن البث والتسجيل إلا إذا فعّلته.</span></li>
+      </ul>
+      <ul class="ticks" data-l="en">
+        <li><span><b>Offline:</b> the translation model is inside the app; your screen text never leaves the PC.</span></li>
+        <li><span><b>Focus boxes:</b> draw boxes where the text is, and only those are translated.</span></li>
+        <li><span>An on/off key from inside the game, and one for drawing the boxes.</span></li>
+        <li><span>The Arabic is hidden from streams and recordings unless you switch that on.</span></li>
+      </ul>
+    </div>
+    <div class="tr" role="img" aria-label="A sample: English game text replaced by Arabic">
+      <div class="game">
+        <div class="box"></div>
+        <div class="text">
+          <div class="en">QUEST COMPLETE<small>Return to the camp before nightfall.</small></div>
+          <div class="ar">اكتملت المهمة<small>ارجع إلى المخيم قبل حلول الليل.</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="crosshair">
+  <div class="wrap">
+    <div class="intro">
+      <div class="eyebrow"><span data-l="ar">علامة التصويب</span><span data-l="en">Crosshair</span></div>
+      <h2><span data-l="ar">علامة Marvel Rivals حقك، في أي لعبة</span><span data-l="en">YOUR MARVEL RIVALS CROSSHAIR, IN ANY GAME</span></h2>
+      <p data-l="ar">نفس قائمة اللعبة بنفس الترتيب: النوع، السماكة، الوضوح، الإطار، التمويه، فراغ الوسط، الطول، الزاوية، واللون، ولكل واحد تفاصيل للخطوط والدائرة والنقطة. والكود نفسه كود اللعبة: تنسخه من Marvel Rivals وتستورده، أو تصدّر من 140 وتلصقه في اللعبة. جرّب هنا: الصق أي كود وشوف العلامة.</p>
+      <p data-l="en">The game's own list, in its order: type, width, opacity, outline, blur, centre gap, length, angle and colour, each with Details for the lines, circle and dot. The code is the game's code: copy it from Marvel Rivals and import it, or export from 140 and paste it into the game. Try it here: paste any code and see the crosshair.</p>
+    </div>
+    <div class="xh">
+      <div>
+        <canvas id="xc" width="600" height="600" aria-label="Crosshair preview"></canvas>
+      </div>
+      <div style="display:grid;gap:12px;min-width:0">
+        <label for="code"><span data-l="ar">كود العلامة من Marvel Rivals</span><span data-l="en">Marvel Rivals reticle code</span></label>
+        <textarea id="code" spellcheck="false">1;0;10.0,10.0,10.0,0.0;100.0,100.0,100.0,0.0;0.0,50.0,25.0,0.0;0.0,0.0,0.0,0.0;0.0,0.0,0.0,0.0;7.0,7.0,7.0,7.0;30.0;100.0,100.0,100.0,0.0;0.0;0,0,0,0;0.0,1.0,0.0;</textarea>
+        <div class="status" id="xstat"></div>
+        <div class="chips" id="presets"></div>
+        <div class="read" id="xread"></div>
+        <ul class="ticks" data-l="ar">
+          <li><span><b>جلب علاماتك من اللعبة:</b> زر واحد يجيب كل العلامات المحفوظة في Marvel Rivals بأسمائها.</span></li>
+          <li><span>قائمة حفظ مثل اللعبة: حفظ كجديدة، استبدال، حذف، استيراد، تصدير.</span></li>
+          <li><span>تتوسع وقت الإطلاق، ولها زر إظهار وإخفاء، والنقرات تمر من خلالها للعبة.</span></li>
+        </ul>
+        <ul class="ticks" data-l="en">
+          <li><span><b>Bring your saves:</b> one button brings every reticle saved in Marvel Rivals, by name.</span></li>
+          <li><span>A save list like the game's: save as new, overwrite, delete, import, export.</span></li>
+          <li><span>Spreads while firing, has a show/hide key, and clicks pass straight through to the game.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="characters">
+  <div class="wrap">
+    <div class="intro">
+      <div class="eyebrow"><span data-l="ar">الشخصيات</span><span data-l="en">Characters</span></div>
+      <h2><span data-l="ar">البرنامج كله ياخذ لون شخصيتك</span><span data-l="en">THE WHOLE APP WEARS YOUR CHARACTER</span></h2>
+      <p data-l="ar">كل شخصية تغيّر ألوان البرنامج، وصوت النقرات، والموسيقى، وحركة التشغيل لما تضغط «تشغيل». اضغط على أي وحدة هنا وشوف.</p>
+      <p data-l="en">Each character changes the app's colours, click sounds, music and the launch scene when you press Launch. Tap one here to see.</p>
+    </div>
+    <div class="cast" id="cast"></div>
+    <div class="shot">
+      <img data-l="ar" src="img/ar-character.jpg" alt="صفحة الشخصيات" width="1200" height="640" loading="lazy">
+      <img data-l="en" src="img/en-character.jpg" alt="The character page" width="1200" height="640" loading="lazy">
+    </div>
+    <div class="intro">
+      <h3 style="font-size:28px"><span data-l="ar">لكل شخصية تشغيل خاص</span><span data-l="en">EVERY CHARACTER HAS ITS OWN LAUNCH</span></h3>
+      <p data-l="ar">يورو يقطع الشاشة بضربة حبر، هانا تفتح زهرة، مومو تمشي بآثار أقدام، توجي يطلع بهالة، ولوسي تدخل الشبكة بفيديو كامل.</p>
+      <p data-l="en">Yuro cuts the screen with an ink stroke, Hana opens a bloom, Momo walks in paw prints, Toji rises in an aura, and Lucy dives into the net with a full video.</p>
+    </div>
+    <div class="reel">
+      <figure><img src="img/launch-1.jpg" alt="" loading="lazy" width="1200" height="640"><figcaption class="num">0:01</figcaption></figure>
+      <figure><img src="img/launch-2.jpg" alt="" loading="lazy" width="1200" height="640"><figcaption class="num">0:03</figcaption></figure>
+      <figure><img src="img/launch-3.jpg" alt="" loading="lazy" width="1200" height="640"><figcaption class="num">0:04</figcaption></figure>
+      <figure><img src="img/launch-4.jpg" alt="" loading="lazy" width="1200" height="640"><figcaption class="num">0:05</figcaption></figure>
+      <figure><img src="img/launch-5.jpg" alt="" loading="lazy" width="1200" height="640"><figcaption class="num">0:08</figcaption></figure>
+      <figure><img src="img/launch-6.jpg" alt="" loading="lazy" width="1200" height="640"><figcaption class="num">0:11</figcaption></figure>
+    </div>
+    <p data-l="ar" style="color:var(--ink-2)">تبي شخصية من عندك؟ حط صورتها <span class="num">character.png</span> وملف <span class="num">theme.ini</span> في مجلد الشخصيات، ولو تبي فيديو تشغيل حط <span class="num">launch.mp4</span>، واضغط إعادة التحميل.</p>
+    <p data-l="en" style="color:var(--ink-2)">Want your own? Put a <span class="num">character.png</span> and a <span class="num">theme.ini</span> in a slot folder, add <span class="num">launch.mp4</span> for a launch video, and press Reload.</p>
+  </div>
+</section>
+
+<section class="band" id="tools">
+  <div class="wrap">
+    <div class="intro">
+      <div class="eyebrow"><span data-l="ar">أدوات النظام</span><span data-l="en">System tools</span></div>
+      <h2><span data-l="ar">قبل ما تلعب</span><span data-l="en">BEFORE YOU PLAY</span></h2>
+    </div>
+    <div class="tools" data-l="ar">
+      <div><b>تعزيز اللعب</b><span>خطة الأداء العالي أثناء عمل 140، وترجع خطتك لما تطلع.</span></div>
+      <div><b>برامج بدء التشغيل</b><span>توقف البرامج اللي تشتغل مع ويندوز، وتقدر ترجعها.</span></div>
+      <div><b>التنظيف</b><span>يمسح الملفات المؤقتة القديمة.</span></div>
+      <div><b>الشبكة</b><span>يقيس الاستجابة ويمسح ذاكرة DNS.</span></div>
+      <div><b>وضع الألعاب ونقطة الاستعادة</b><span>يفتح لك إعدادات ويندوز مباشرة.</span></div>
+      <div><b>تقرير للذكاء الاصطناعي</b><span>ملف عن آخر جلسة لعب تعطيه لأي مساعد عشان يحلل التقطيع.</span></div>
+    </div>
+    <div class="tools" data-l="en">
+      <div><b>Game boost</b><span>The High performance plan while 140 runs; your plan comes back when you exit.</span></div>
+      <div><b>Startup apps</b><span>Stop apps that start with Windows, and bring them back.</span></div>
+      <div><b>Clean-up</b><span>Removes old temporary files.</span></div>
+      <div><b>Network</b><span>Measures response time and flushes the DNS cache.</span></div>
+      <div><b>Game Mode and restore point</b><span>Opens the right Windows settings.</span></div>
+      <div><b>Report for AI</b><span>A file about your last session to hand to any assistant to explain stutters.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="install">
+  <div class="wrap">
+    <div class="intro">
+      <div class="eyebrow"><span data-l="ar">التثبيت</span><span data-l="en">Install</span></div>
+      <h2><span data-l="ar">ملف واحد، وخلاص</span><span data-l="en">ONE FILE. THAT'S IT.</span></h2>
+      <p data-l="ar">ما يحتاج تثبيت. البرنامج كله في <span class="num">140.exe</span>، وأول ما تشغله يطلّع شخصياته وأصواتها جنبه.</p>
+      <p data-l="en">Nothing to install. The whole app is <span class="num">140.exe</span>; on first start it writes its characters and sounds next to itself.</p>
+    </div>
+    <ol class="steps">
+      <li>
+        <h3><span data-l="ar">حمّل وحطه في مجلد</span><span data-l="en">DOWNLOAD IT INTO A FOLDER</span></h3>
+        <p data-l="ar">مثلًا <span class="num">سطح المكتب\140</span>، لأنه يحط ملفاته جنبه.</p>
+        <p data-l="en">For example <span class="num">Desktop\140</span>, since it keeps its files next to itself.</p>
+      </li>
+      <li>
+        <h3><span data-l="ar">شغّله</span><span data-l="en">RUN IT</span></h3>
+        <p data-l="ar">إذا طلع تحذير ويندوز الأزرق اضغط <b>More info</b> ثم <b>Run anyway</b>. يطلع لأن البرنامج ما عليه توقيع مدفوع، ومرة وحدة بس.</p>
+        <p data-l="en">If Windows shows the blue warning, press <b>More info</b>, then <b>Run anyway</b>. It shows because the app has no paid signature, and only once.</p>
+      </li>
+      <li>
+        <h3><span data-l="ar">اضغط «تشغيل»</span><span data-l="en">PRESS LAUNCH</span></h3>
+        <p data-l="ar">من الصفحة الرئيسية، وشغّل اللي تبيه: الإحصائيات، المترجم، أو علامة التصويب.</p>
+        <p data-l="en">On the home page, then switch on what you want: stats, translator or crosshair.</p>
+      </li>
+    </ol>
+    <div class="req">
+      <span><span data-l="ar">ويندوز 10 أو 11، 64 بت</span><span data-l="en">Windows 10 or 11, 64-bit</span></span>
+      <span><span data-l="ar">تقريبًا 250 ميقا مساحة</span><span data-l="en">About 250 MB of space</span></span>
+      <span><span data-l="ar">اللعبة على «ملء الشاشة بدون حدود»</span><span data-l="en">Game in borderless mode</span></span>
+    </div>
+    <div class="faq">
+      <details>
+        <summary><span data-l="ar">هل يلمس اللعبة؟</span><span data-l="en">Does it touch the game?</span></summary>
+        <p data-l="ar">كل شيء في 140 نوافذ عادية فوق الشاشة، مثل أي برنامج تسجيل أو ديسكورد. ما يحقن ملفات في اللعبة، ولا يقرأ ذاكرتها، ولا يستخدم درايفر.</p>
+        <p data-l="en">Everything in 140 is a plain window over the screen, like a recorder or Discord. It injects nothing into the game, reads no game memory and uses no driver.</p>
+      </details>
+      <details>
+        <summary><span data-l="ar">علامة التصويب أو الإحصائيات ما تظهر فوق اللعبة</span><span data-l="en">The crosshair or stats do not show over the game</span></summary>
+        <p data-l="ar">خلّ اللعبة على «ملء الشاشة بدون حدود» (Borderless) أو نافذة. وضع ملء الشاشة الحصري يخفي أي شيء فوق اللعبة.</p>
+        <p data-l="en">Set the game to borderless or windowed. Exclusive full screen hides everything drawn over a game.</p>
+      </details>
+      <details>
+        <summary><span data-l="ar">عداد الفريمات ما يشتغل</span><span data-l="en">The FPS counter shows nothing</span></summary>
+        <p data-l="ar">يحتاج صلاحية مسؤول. اضغط «تفعيل عداد الفريمات» في الرئيسية مرة وحدة.</p>
+        <p data-l="en">It needs administrator rights. Press "Enable FPS counter" on the home page once.</p>
+      </details>
+      <details>
+        <summary><span data-l="ar">المترجم ما يقرأ شيء</span><span data-l="en">The translator reads nothing</span></summary>
+        <p data-l="ar">يحتاج لغة English (United States) مضافة في إعدادات ويندوز، وبعدها يشتغل.</p>
+        <p data-l="en">It needs English (United States) added in the Windows language settings.</p>
+      </details>
+      <details>
+        <summary><span data-l="ar">كيف أحدّث البرنامج؟</span><span data-l="en">How do I update?</span></summary>
+        <p data-l="ar">حمّل <span class="num">140.exe</span> الجديد وحطه مكان القديم. إعداداتك وعلاماتك المحفوظة تبقى، وأي ملف عدلته بنفسك ما يتغير.</p>
+        <p data-l="en">Download the new <span class="num">140.exe</span> over the old one. Your settings and saved crosshairs stay, and files you edited yourself are left alone.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap final">
+    <span class="big140">140</span>
+    <a class="plate" data-download href="140.exe">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13M6 11l6 6 6-6M4 21h16"/></svg>
+      <b><span data-l="ar">تحميل لويندوز</span><span data-l="en">DOWNLOAD FOR WINDOWS</span></b>
+    </a>
+    <div class="facts"><span data-l="ar">مجاني · 180 ميقا · ويندوز 10 و 11</span><span data-l="en">Free · 180 MB · Windows 10 and 11</span></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>140 <span class="num">v18</span></span>
+    <span data-l="ar">الترجمة بنموذج OPUS-MT (Apache 2.0)، مع OpenBLAS وruy. ملفات الرخص تنزل مع البرنامج.</span>
+    <span data-l="en">Translation by the OPUS-MT model (Apache 2.0), with OpenBLAS and ruy. Licence files come with the app.</span>
+  </div>
+</footer>
+
+<script>
+// Where the Download buttons point. On GitHub Pages (<user>.github.io/<repo>/) it is worked out
+// from the address: the newest release's 140.exe. Anywhere else, a 140.exe next to this page.
+const DOWNLOAD_URL = (() => {
+  const host = location.hostname, repo = location.pathname.split("/").filter(Boolean)[0];
+  if (host.endsWith(".github.io") && repo) return `https://github.com/${host.split(".")[0]}/${repo}/releases/latest/download/140.exe`;
+  return "140.exe";
+})();
+document.querySelectorAll("[data-download]").forEach(a => { a.href = DOWNLOAD_URL; a.setAttribute("download", "140.exe"); });
+
+const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
+const root = document.documentElement;
+
+// ---------- the same five characters as the app, with their theme.ini colours ----------
+const CHARS = [
+  { id: "yuro", name: "YURO", ink: "#ffffff", paper: "#08080a", fx: "smoke", ar: "حبر ودخان", en: "Ink and smoke" },
+  { id: "hana", name: "HANA", ink: "#c2255c", paper: "#fff5f8", fx: "petals", ar: "بتلات ورد", en: "Petals" },
+  { id: "momo", name: "MOMO", ink: "#6b4a3a", paper: "#f6eee3", fx: "paws", ar: "آثار أقدام", en: "Paw prints" },
+  { id: "toji", name: "TOJI", ink: "#9bff3c", paper: "#060906", fx: "aura", ar: "هالة", en: "Aura" },
+  { id: "lucy", name: "LUCY", ink: "#c4b648", paper: "#0b1022", fx: "cyber", ar: "سايبر", en: "Cyber" },
+];
+let current = CHARS[0];
+
+// ---------- the hero's effect: each character's launch effect, quietly ----------
+const fx = document.getElementById("fx"), g = fx.getContext("2d");
+const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let parts = [], raf = 0;
+const t0 = performance.now();
+function size() { const d = Math.min(2, devicePixelRatio || 1); fx.width = fx.clientWidth * d; fx.height = fx.clientHeight * d; g.setTransform(d, 0, 0, d, 0, 0); }
+function rnd(a, b) { return a + Math.random() * (b - a); }
+function startFx() {
+  size();
+  const W = fx.clientWidth, H = fx.clientHeight, n = { smoke: 22, petals: 34, paws: 14, aura: 46, cyber: 34 }[current.fx];
+  parts = Array.from({ length: n }, (_, i) => ({ x: rnd(0, W), y: rnd(0, H), s: rnd(.4, 1), r: rnd(0, 6.28), v: rnd(.5, 1.5), i }));
+  cancelAnimationFrame(raf);
+  if (still) { frame(t0 + 1500); return; }
+  raf = requestAnimationFrame(loop);
+}
+function loop(t) { frame(t); raf = requestAnimationFrame(loop); }
+function frame(t) {
+  const W = fx.clientWidth, H = fx.clientHeight, s = (t - t0) / 1000, ink = current.ink;
+  g.clearRect(0, 0, W, H);
+  g.fillStyle = ink; g.strokeStyle = ink;
+  for (const p of parts) {
+    if (current.fx === "smoke") {
+      const y = ((p.y - s * 18 * p.v) % (H + 160) + H + 160) % (H + 160) - 80, x = p.x + Math.sin(s * .4 + p.i) * 30;
+      const rad = 40 + 70 * p.s, grd = g.createRadialGradient(x, y, 0, x, y, rad);
+      grd.addColorStop(0, ink + "14"); grd.addColorStop(1, ink + "00"); g.fillStyle = grd;
+      g.beginPath(); g.arc(x, y, rad, 0, 6.28); g.fill();
+    } else if (current.fx === "petals") {
+      const y = ((p.y + s * 30 * p.v) % (H + 40)) - 20, x = ((p.x - s * 14 * p.v + Math.sin(s + p.i) * 20) % W + W) % W;
+      g.save(); g.translate(x, y); g.rotate(p.r + s * p.v); g.globalAlpha = .18 + .25 * p.s;
+      g.beginPath(); g.ellipse(0, 0, 9 * p.s + 4, 4 * p.s + 2, 0, 0, 6.28); g.fill(); g.restore();
+    } else if (current.fx === "paws") {
+      const k = (s * .9 + p.i * .7) % 10, a = k < 1 ? k : k > 6 ? Math.max(0, 1 - (k - 6) / 2) : 1;
+      if (a <= 0) continue;
+      g.save(); g.translate(p.x, p.y); g.rotate(.6 + (p.i & 1) * .3); g.globalAlpha = .16 * a;
+      const z = 7 + 5 * p.s;
+      g.beginPath(); g.ellipse(0, z * .35, z * 1.05, z * .85, 0, 0, 6.28); g.fill();
+      for (let q = 0; q < 4; q++) { const an = (-58 + q * 38.7) * Math.PI / 180; g.beginPath(); g.ellipse(Math.sin(an) * 1.45 * z, -Math.cos(an) * 1.35 * z + .2 * z, .4 * z, .5 * z, 0, 0, 6.28); g.fill(); }
+      g.restore();
+    } else if (current.fx === "aura") {
+      const age = (s * (.25 + .35 * p.s) + p.i * .137) % 1, y = H + 30 - age * (H + 120), len = 24 + 70 * p.s;
+      g.globalAlpha = Math.sin(age * 3.14) * (.12 + .25 * p.s); g.lineWidth = 1 + 2 * p.s;
+      g.beginPath(); g.moveTo(p.x, y + len); g.lineTo(p.x + (p.s - .5) * 10, y); g.stroke();
+    } else {                                           // cyber: data rain; glitch bands below
+      const head = ((s * (120 + 160 * p.s) + p.y) % (H + 160)) - 80;
+      for (let k = 0; k < 7; k++) { g.globalAlpha = k === 0 ? .5 : .22 * (1 - k / 7); g.fillRect(p.x, head - k * 14, 2.5, 8); }
+    }
+  }
+  if (current.fx === "cyber") {
+    const f = Math.floor(s * 12);
+    for (let i = 0; i < 4; i++) {
+      const r1 = Math.abs(Math.sin(i * 7.1 + f) * 43758.5) % 1, r2 = Math.abs(Math.sin(i * 3.3 + f * 1.7) * 43758.5) % 1;
+      if (r2 > .55) continue;
+      g.globalAlpha = .12; g.fillStyle = "#ff003c"; g.fillRect(r1 * W * .7 - 6, r2 * H, 140 + 260 * r2, 3 + 10 * r2);
+      g.fillStyle = ink; g.fillRect(r1 * W * .7 + 6, r2 * H, 140 + 260 * r2, 3 + 10 * r2);
+    }
+  }
+  g.globalAlpha = 1;
+}
+addEventListener("resize", startFx);
+document.addEventListener("visibilitychange", () => { cancelAnimationFrame(raf); if (!document.hidden && !still) raf = requestAnimationFrame(loop); });
+
+// ---------- stats bar sample: numbers that move like a real session ----------
+let fps = 144;
+setInterval(() => {
+  if (still || document.hidden) return;
+  fps = Math.max(118, Math.min(165, fps + (Math.random() - .5) * 9));
+  const set = (id, v) => { document.getElementById(id).textContent = v; };
+  set("o-fps", Math.round(fps)); set("o-low", Math.round(fps * .84)); set("o-ms", (1000 / fps).toFixed(1));
+  set("o-gpu", Math.round(55 + Math.random() * 14)); set("o-gt", Math.round(63 + Math.random() * 3)); set("o-cpu", Math.round(18 + Math.random() * 12));
+}, 700);
+
+// ---------- crosshair: the Marvel Rivals code, drawn the way 140 draws it ----------
+// Fields of four are Common, Crosshair, Circle, Dot. Game units to pixels match the app.
+const PALETTE = ["#ffffff", "#ff2626", "#ffeb1a", "#33ff33", "#338cff"];
+const PRESETS = [
+  ["Cross", "تقاطع", "2;1;10.0,10.0,10.0,0.0;100.0,100.0,100.0,0.0;50.0,50.0,50.0,50.0;100.0,100.0,100.0,100.0;0.0,0.0,0.0,0.0;33.0,11.0,33.0,33.0;10.0;100.0,100.0,100.0,0.0;0.0;0,0,0,0;1.0,1.0,1.0;"],
+  ["Dot", "نقطة", "3;1;10.0,10.0,10.0,14.0;100.0,100.0,100.0,100.0;50.0,50.0,50.0,50.0;100.0,100.0,100.0,100.0;0.0,0.0,0.0,0.0;33.0,33.0,33.0,33.0;30.0;100.0,100.0,100.0,100.0;0.0;5,5,5,5;0.0,1.0,1.0;"],
+  ["Circle", "دائرة", "1;1;10.0,10.0,10.0,14.0;100.0,100.0,100.0,100.0;50.0,50.0,50.0,50.0;100.0,100.0,100.0,100.0;0.0,0.0,0.0,0.0;33.0,33.0,22.0,33.0;30.0;100.0,100.0,100.0,100.0;0.0;3,3,3,3;1.0,1.0,1.0;"],
+  ["X", "X", "2;0;10.0,10.0,10.0,0.0;100.0,100.0,100.0,0.0;50.0,50.0,50.0,50.0;100.0,100.0,100.0,100.0;0.0,0.0,0.0,0.0;33.0,15.0,33.0,33.0;15.0;100.0,100.0,100.0,0.0;45.0;2,2,2,2;1.0,1.0,1.0;"],
+  ["Both", "الاثنين", "4;1;10.0,10.0,10.0,10.0;100.0,100.0,100.0,100.0;50.0,50.0,50.0,50.0;100.0,100.0,100.0,100.0;0.0,0.0,0.0,0.0;33.0,14.0,40.0,33.0;10.0;100.0,100.0,100.0,100.0;0.0;0,0,0,0;1.0,1.0,1.0;"],
+  ["Flower", "زهرة", "2;0;10.0,100.0,10.0,30.0;100.0,100.0,100.0,100.0;70.0,65.0,70.0,50.0;100.0,100.0,100.0,100.0;10.0,10.0,10.0,10.0;33.0,8.0,33.0,33.0;13.0;100.0,100.0,100.0,100.0;45.0;5,5,5,2;0.698,0.204,0.259;"],
+];
+function parse(code) {
+  const f = code.replace(/[\s"'“”]/g, "").split(";");
+  if (f.length < 13) return null;
+  const quad = (s, lo, hi) => { const v = s.split(",").map(Number); if (!s || v.some(isNaN)) return null; while (v.length < 4) v.push(v[v.length - 1]); return v.slice(0, 4).map(n => Math.min(hi, Math.max(lo, n))); };
+  const r = { type: Math.round(+f[0]), anim: +f[1] !== 0, thick: quad(f[2], 0, 100), opacity: quad(f[3], 0, 100), outline: quad(f[4], 0, 100),
+    outlineOp: quad(f[5], 0, 100), blur: quad(f[6], 0, 100), radius: quad(f[7], 0, 100), length: +f[8], angle: +f[10], color: quad(f[11], 0, 5), rgb: quad(f[12], 0, 1) };
+  if (isNaN(r.type) || r.type < 0 || r.type > 9 || [r.thick, r.opacity, r.outline, r.outlineOp, r.blur, r.radius, r.color, r.rgb].some(q => !q) || isNaN(r.length) || isNaN(r.angle)) return null;
+  return r;
+}
+const shows = (r, p) => p === 1 ? r.type !== 1 && r.type !== 3 : p === 2 ? r.type === 1 || r.type >= 4 : r.type === 3 || (r.opacity[3] > 0 && r.thick[3] > 0);
+const colour = (r, p) => { const c = Math.round(r.color[p]); return c < 5 ? PALETTE[c] : `rgb(${r.rgb.slice(0, 3).map(v => Math.round(v * 255)).join(",")})`; };
+const xc = document.getElementById("xc"), x = xc.getContext("2d");
+let reticle = null;
+function drawReticle() {
+  const S = xc.width, px = 3 * S / 300;                 // shown at three times its size
+  const css = getComputedStyle(root);
+  x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1;
+  x.fillStyle = css.getPropertyValue("--game-sky").trim(); x.fillRect(0, 0, S, S);
+  x.fillStyle = css.getPropertyValue("--game-ground").trim(); x.fillRect(0, S * .62, S, S);
+  x.fillStyle = css.getPropertyValue("--game-wall").trim(); x.fillRect(S * .5, S * .34, S * .3, S * .28);
+  const r = reticle; if (!r) return;
+  const cx = S / 2, cy = S / 2;
+  for (let pass = 0; pass < 2; pass++) {                // every outline first, then the reticle on top
+    if (shows(r, 1) && r.opacity[1] > 0 && r.length > 0) {
+      const t = Math.max(1, Math.round(r.thick[1] * .1 * px)), gap = Math.round(r.radius[1] * .5 * px), len = Math.max(1, Math.round(r.length * .5 * px));
+      const o = r.outline[1] * .02 * px, glow = r.blur[1] * .1 * px, a = r.opacity[1] / 100;
+      for (let k = 0; k < 4; k++) {
+        x.setTransform(1, 0, 0, 1, cx, cy); x.rotate((r.angle + k * 90) * Math.PI / 180);
+        if (pass === 0) {
+          for (let q = 3; q >= 1 && glow > 0; q--) { const w = glow * q / 3; x.globalAlpha = a * .22; x.fillStyle = colour(r, 1); x.fillRect(gap - w, -t / 2 - w, len + 2 * w, t + 2 * w); }
+          if (o > 0 && r.outlineOp[1] > 0) { const w = Math.max(1, Math.round(o)); x.globalAlpha = a * r.outlineOp[1] / 100; x.fillStyle = "#000"; x.fillRect(gap - w, -t / 2 - w, len + 2 * w, t + 2 * w); }
+        } else { x.globalAlpha = a; x.fillStyle = colour(r, 1); x.fillRect(gap, -t / 2, len, t); }
+      }
+      x.setTransform(1, 0, 0, 1, 0, 0);
+    }
+    if (shows(r, 2) && r.opacity[2] > 0) {
+      const t = Math.max(1, r.thick[2] * .1 * px), rad = r.radius[2] * .5 * px, o = r.outline[2] * .02 * px, glow = r.blur[2] * .1 * px, a = r.opacity[2] / 100;
+      x.beginPath(); x.arc(cx, cy, Math.max(.5, rad), 0, 6.283);
+      if (pass === 0) {
+        for (let q = 3; q >= 1 && glow > 0; q--) { x.globalAlpha = a * .22; x.strokeStyle = colour(r, 2); x.lineWidth = t + 2 * glow * q / 3; x.stroke(); }
+        if (o > 0 && r.outlineOp[2] > 0) { x.globalAlpha = a * r.outlineOp[2] / 100; x.strokeStyle = "#000"; x.lineWidth = t + 2 * Math.max(1, o); x.stroke(); }
+      } else { x.globalAlpha = a; x.strokeStyle = colour(r, 2); x.lineWidth = t; x.stroke(); }
+    }
+    if (shows(r, 3) && r.opacity[3] > 0) {
+      const d = Math.max(2, Math.round(r.thick[3] * .2 * px)), o = r.outline[3] * .02 * px, glow = r.blur[3] * .1 * px, a = r.opacity[3] / 100;
+      const dot = (rad, c, al) => { x.globalAlpha = al; x.fillStyle = c; x.beginPath(); x.arc(cx, cy, rad, 0, 6.283); x.fill(); };
+      if (pass === 0) {
+        for (let q = 3; q >= 1 && glow > 0; q--) dot(d / 2 + glow * q / 3, colour(r, 3), a * .22);
+        if (o > 0 && r.outlineOp[3] > 0) dot(d / 2 + Math.max(1, o), "#000", a * r.outlineOp[3] / 100);
+      } else dot(d / 2, colour(r, 3), a);
+    }
+  }
+  x.globalAlpha = 1;
+}
+const TYPES = { ar: ["افتراضي", "دائرة", "خطوط تقاطع", "نقطة", "دائرة وخطوط تقاطع"], en: ["Default", "Circle", "Crosshairs", "Dot", "Circle and Crosshairs"] };
+const COLS = { ar: ["أبيض", "أحمر", "أصفر", "أخضر", "أزرق", "مخصص"], en: ["White", "Red", "Yellow", "Green", "Blue", "Custom"] };
+const codeBox = document.getElementById("code");
+function readout() {
+  const ar = root.lang === "ar", st = document.getElementById("xstat"), rd = document.getElementById("xread");
+  document.getElementById("presets").innerHTML = PRESETS.map((p, i) => `<button type="button" data-p="${i}">${ar ? p[1] : p[0]}</button>`).join("");
+  document.querySelectorAll("[data-p]").forEach(b => b.onclick = () => { codeBox.value = PRESETS[b.dataset.p][2]; update(); });
+  if (!reticle) {
+    st.textContent = ar ? "هذا مو كود علامة من Marvel Rivals. انسخ الكود كامل من اللعبة وجرّب." : "That is not a Marvel Rivals reticle code. Copy the whole code from the game and try again.";
+    rd.innerHTML = ""; return;
+  }
+  st.textContent = ar ? "الكود صحيح، وتقدر تستورده في 140 بزر «استيراد»." : "The code is valid. Import it in 140 with the Import button.";
+  const r = reticle, n = v => Math.round(v), L = ar ? "ar" : "en";
+  const names = ar ? ["النوع", "السماكة", "الوضوح", "الإطار", "فراغ الوسط", "الطول", "الزاوية", "اللون"] : ["Type", "Width", "Opacity", "Outline", "Center gap", "Length", "Angle", "Color"];
+  const vals = [TYPES[L][r.type] ?? r.type, n(r.thick[0]), n(r.opacity[0]), n(r.outline[0]), n(r.radius[0]), n(r.length), n(r.angle) + "°", COLS[L][Math.round(r.color[0])]];
+  rd.innerHTML = names.map((k, i) => `<span>${k}: <b>${vals[i]}</b></span>`).join("");
+}
+function update() { reticle = parse(codeBox.value); drawReticle(); readout(); }
+codeBox.addEventListener("input", update);
+
+// ---------- character and language ----------
+function light(hex) { const v = parseInt(hex.slice(1), 16); return ((v >> 16) * 299 + ((v >> 8) & 255) * 587 + (v & 255) * 114) / 1000 > 140; }
+function renderCast() {
+  const ar = root.lang === "ar";
+  document.getElementById("chars").innerHTML = CHARS.map(c =>
+    `<button type="button" data-c="${c.id}" aria-pressed="${c === current}" style="--c:${c.ink};--p:${c.paper}"><i></i>${c.name}</button>`).join("");
+  document.getElementById("cast").innerHTML = CHARS.map(c =>
+    `<button type="button" data-c="${c.id}" aria-pressed="${c === current}" style="--c:${c.ink};--p:${c.paper}"><b>${c.name}</b><small>${ar ? c.ar : c.en}</small></button>`).join("");
+  document.querySelectorAll("[data-c]").forEach(b => b.onclick = () => pickChar(b.dataset.c));
+}
+function pickChar(id, quiet) {
+  const before = current;
+  current = CHARS.find(c => c.id === id) || CHARS[0];
+  if (!quiet && !still && current !== before) {
+    const cut = document.createElement("div");
+    cut.className = "recut"; cut.innerHTML = "<i></i>";
+    document.body.appendChild(cut);
+    setTimeout(() => cut.remove(), 900);
+  }
+  root.style.setProperty("--ink", current.ink);
+  root.style.setProperty("--paper", current.paper);
+  if (light(current.paper)) root.setAttribute("data-light", ""); else root.removeAttribute("data-light");
+  store.set("140-char", current.id);
+  renderCast(); startFx();
+}
+function setLang(l) {
+  root.lang = l; root.dir = l === "ar" ? "rtl" : "ltr";
+  document.getElementById("lang-ar").setAttribute("aria-pressed", l === "ar");
+  document.getElementById("lang-en").setAttribute("aria-pressed", l === "en");
+  store.set("140-lang", l);
+  renderCast(); readout();
+}
+document.getElementById("lang-ar").onclick = () => setLang("ar");
+document.getElementById("lang-en").onclick = () => setLang("en");
+
+setLang(store.get("140-lang") === "en" ? "en" : "ar");
+pickChar(store.get("140-char") || "yuro", true);
+update();
+</script>
+</body>
+</html>

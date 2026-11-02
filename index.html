@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>140</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="140: إحصائيات فوق اللعبة، مترجم شاشة بدون إنترنت، علامة تصويب بإعدادات Marvel Rivals، وشخصيات بموسيقاها. لويندوز.">
+<meta name="description" content="140: إحصائيات فوق اللعبة، مترجم شاشة وترجمة أفلام بدون إنترنت، علامة تصويب بإعدادات Marvel Rivals، تبديل حسابات Steam وBattle.net، وشخصيات بموسيقاها. لويندوز.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Readex+Pro:wght@300;400;500;700&family=Teko:wght@500;600;700&display=swap">
@@ -88,14 +88,16 @@ html[lang="en"] .hero h1 { font-size: clamp(52px, 7.6vw, 96px); }
 .recut { position: fixed; inset: 0; pointer-events: none; z-index: 20; overflow: hidden; }
 .recut i { position: absolute; left: -10%; top: 50%; width: 120%; height: 14px; background: var(--ink); transform-origin: 0 50%; transform: rotate(-11deg) scaleX(0); animation: cut .32s cubic-bezier(.6,0,.2,1) forwards, fade .5s .32s ease forwards; }
 .shot { position: relative; border: 1.5px solid var(--line); background: var(--plate); box-shadow: 14px 14px 0 -2px var(--line); }
-.shot img { width: 100%; aspect-ratio: 1200 / 640; object-fit: cover; }
+.shot img { width: 100%; aspect-ratio: 1920 / 1024; object-fit: cover; transition: opacity .22s ease; }
+.shot img.swap { opacity: 0; }                       /* the next character's picture fades in */
+.shot.glow { box-shadow: 14px 14px 0 -2px var(--line), 0 0 70px -12px color-mix(in srgb, var(--ink) 40%, transparent); }
 .hero .shot { transform: rotate(-1.4deg); animation: rise .9s .25s cubic-bezier(.2,.8,.2,1) both; }
 @keyframes rise { from { transform: rotate(-1.4deg) translateY(24px); } to { transform: rotate(-1.4deg); } }
 .pick { margin-top: 26px; }
 .pick .eyebrow { margin-bottom: 10px; }
 .chars { display: flex; flex-wrap: wrap; gap: 8px; }
 .chars button { all: unset; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 6px 12px 6px 8px; border: 1.5px solid var(--line); font: 500 17px/1 var(--display-en); letter-spacing: .08em; }
-.chars button i { width: 18px; height: 18px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 2px var(--p), 0 0 0 3.5px var(--ink-3); }
+.chars button i { width: 26px; height: 26px; border-radius: 50%; background: var(--f) 50% 22% / cover, var(--c); box-shadow: 0 0 0 2px var(--p), 0 0 0 3.5px var(--c); }
 .chars button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--paper); }
 .chars button:hover:not([aria-pressed="true"]) { border-color: var(--ink-2); }
 @media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; padding-block: 36px 48px; } }
@@ -107,16 +109,20 @@ section.band > .wrap { padding-block: 72px; display: grid; gap: 34px; }
 html[lang="en"] .band h2 { font-size: clamp(40px, 5.4vw, 64px); }
 .band .intro { display: grid; gap: 14px; }
 .band .intro p { color: var(--ink-2); font-size: 17px; }
-.six { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1.5px solid var(--ink); }
-.six a { text-decoration: none; padding: 22px 22px 26px; border-bottom: 1px solid var(--line); border-inline-end: 1px solid var(--line); display: grid; gap: 8px; align-content: start; transition: background .2s; }
-.six a:nth-child(3n) { border-inline-end: 0; }
-.six a:hover { background: var(--plate); }
+/* The cells sit on a 1px grid of the line colour: the gaps are the rules, at any column count. */
+.six { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border-top: 1.5px solid var(--ink); border-bottom: 1px solid var(--line); }
+.six a { text-decoration: none; padding: 22px 22px 26px; background: var(--paper); display: grid; gap: 8px; align-content: start; transition: background .2s; position: relative; }
+.six a:hover { background: color-mix(in srgb, var(--ink) 6%, var(--paper)); }
+.six a::after { content: ""; position: absolute; inset-inline-start: 22px; bottom: 14px; width: 0; height: 3px; background: var(--ink); transform: skewX(-24deg); transition: width .25s ease; }
+.six a:hover::after { width: 38px; }
 .six h3 { font-size: 24px; }
 html[lang="en"] .six h3 { font-size: 30px; }
 .six p { color: var(--ink-2); font-size: 15px; }
 .six svg { width: 30px; height: 30px; stroke: var(--ink); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-@media (max-width: 860px) { .six { grid-template-columns: 1fr 1fr; } .six a:nth-child(3n) { border-inline-end: 1px solid var(--line); } .six a:nth-child(2n) { border-inline-end: 0; } }
-@media (max-width: 520px) { .six { grid-template-columns: 1fr; } .six a { border-inline-end: 0 !important; } }
+.six .new { position: absolute; inset-inline-end: 16px; top: 18px; font: 600 13px/1 var(--display-en); letter-spacing: .1em; background: var(--ink); color: var(--paper); padding: 4px 7px 2px; transform: skewX(-12deg); }
+html[lang="ar"] .six .new { font: 400 13px/1 var(--display-ar); padding: 5px 8px 3px; }
+@media (max-width: 1000px) { .six { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .six { grid-template-columns: 1fr; } }
 
 .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 44px; align-items: center; }
 .split.flip > :first-child { order: 2; }
@@ -162,10 +168,14 @@ html[lang="en"] .six h3 { font-size: 30px; }
 
 /* characters and launches */
 .cast { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
-.cast button { all: unset; cursor: pointer; padding: 14px 12px; border: 1.5px solid var(--line); background: var(--p); color: var(--c); display: grid; gap: 4px; transition: transform .2s; }
-.cast button:hover { transform: translateY(-3px); }
-.cast button[aria-pressed="true"] { outline: 2.5px solid var(--ink); outline-offset: 2px; }
-.cast b { font: 600 26px/1 var(--display-en); letter-spacing: .06em; }
+/* Each card is a small sample of the character: its picture, on its paper, in its ink. */
+.cast button { all: unset; cursor: pointer; border: 1.5px solid var(--line); background: var(--p); color: var(--c); display: grid; transition: transform .2s, box-shadow .2s; overflow: hidden; }
+.cast button img { width: 100%; aspect-ratio: 250 / 340; object-fit: cover; transition: transform .35s ease; }
+.cast button:hover { transform: translateY(-4px); box-shadow: 0 10px 28px -14px var(--c); }
+.cast button:hover img { transform: scale(1.04); }
+.cast button span { display: grid; gap: 3px; padding: 10px 12px 12px; border-top: 4px solid var(--c); }
+.cast button[aria-pressed="true"] { outline: 2.5px solid var(--ink); outline-offset: 3px; }
+.cast b { font: 600 26px/1 var(--display-en); letter-spacing: .06em; font-style: italic; }
 .cast small { font-size: 12px; opacity: .8; }
 @media (max-width: 760px) { .cast { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .reel { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
@@ -214,6 +224,7 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
     <nav class="links">
       <a href="#features"><span data-l="ar">الميزات</span><span data-l="en">Features</span></a>
       <a href="#crosshair"><span data-l="ar">علامة التصويب</span><span data-l="en">Crosshair</span></a>
+      <a href="#accounts"><span data-l="ar">الحسابات</span><span data-l="en">Accounts</span></a>
       <a href="#characters"><span data-l="ar">الشخصيات</span><span data-l="en">Characters</span></a>
       <a href="#install"><span data-l="ar">التثبيت</span><span data-l="en">Install</span></a>
     </nav>
@@ -236,8 +247,8 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
         <span data-l="ar">رفيقك فوق اللعبة.</span>
         <span data-l="en">YOUR COMPANION OVER THE GAME.</span>
       </h1>
-      <p class="lead" data-l="ar">إحصائيات جهازك وأنت تلعب، مترجم يحوّل كلام اللعبة للعربي بدون إنترنت، علامة تصويب بنفس إعدادات Marvel Rivals، وشخصيات لها ألوانها وموسيقاها. كله في برنامج واحد خفيف ما يلمس اللعبة.</p>
-      <p class="lead" data-l="en">Live PC stats while you play, a screen translator that turns game text into Arabic offline, a crosshair with the exact Marvel Rivals settings, and characters with their own colours and music. One light app that never touches the game.</p>
+      <p class="lead" data-l="ar">إحصائيات جهازك وأنت تلعب، مترجم يحوّل كلام اللعبة والأفلام للعربي بدون إنترنت، علامة تصويب بنفس إعدادات Marvel Rivals، تبديل حسابات Steam وBattle.net بضغطة، وشخصيات لها ألوانها وموسيقاها. كله في برنامج واحد خفيف ما يلمس اللعبة.</p>
+      <p class="lead" data-l="en">Live PC stats while you play, a translator that turns game text and film subtitles into Arabic offline, a crosshair with the exact Marvel Rivals settings, one-click Steam and Battle.net account switching, and characters with their own colours and music. One light app that never touches the game.</p>
       <div class="cta">
         <a class="plate" data-download href="140.exe">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13M6 11l6 6 6-6M4 21h16"/></svg>
@@ -255,9 +266,9 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
         <div class="chars" id="chars"></div>
       </div>
     </div>
-    <div class="shot">
-      <img data-l="ar" src="img/ar-home.jpg" alt="الصفحة الرئيسية في 140" width="1200" height="640">
-      <img data-l="en" src="img/en-home.jpg" alt="The 140 home page" width="1200" height="640">
+    <!-- The app as the picked character dresses it: its picture, its colours. -->
+    <div class="shot glow">
+      <img data-shot="home" src="img/app/ar-yuro-home.jpg" alt="" width="1920" height="1024" decoding="async" fetchpriority="high">
     </div>
   </div>
 </section>
@@ -266,7 +277,7 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
   <div class="wrap">
     <div class="intro">
       <div class="eyebrow"><span data-l="ar">داخل البرنامج</span><span data-l="en">Inside the app</span></div>
-      <h2><span data-l="ar">ستة أشياء في ملف واحد</span><span data-l="en">SIX THINGS IN ONE FILE</span></h2>
+      <h2><span data-l="ar">ثمانية أشياء في ملف واحد</span><span data-l="en">EIGHT THINGS IN ONE FILE</span></h2>
     </div>
     <div class="six">
       <a href="#overlay">
@@ -281,11 +292,25 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
         <p data-l="ar">يقرأ الإنجليزي في اللعبة ويكتب العربي مكانه، على جهازك وبدون إنترنت.</p>
         <p data-l="en">Reads the English in the game and writes the Arabic in its place, on your PC, offline.</p>
       </a>
+      <a href="#subtitles">
+        <span class="new"><span data-l="ar">جديد</span><span data-l="en">NEW</span></span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 13h4M13 13h4M7 16h7"/></svg>
+        <h3><span data-l="ar">ترجمة الأفلام</span><span data-l="en">FILM SUBTITLES</span></h3>
+        <p data-l="ar">تحط ملف ترجمة إنجليزي ويطلع لك ملف عربي جاهز لـ Stremio وVLC.</p>
+        <p data-l="en">Drop an English subtitle file and get an Arabic one, ready for Stremio and VLC.</p>
+      </a>
       <a href="#crosshair">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 2v5M12 17v5M2 12h5M17 12h5"/></svg>
         <h3><span data-l="ar">علامة التصويب</span><span data-l="en">CROSSHAIR</span></h3>
         <p data-l="ar">نفس إعدادات Marvel Rivals ونفس الكود، وتشتغل فوق أي لعبة.</p>
         <p data-l="en">The same settings and the same code as Marvel Rivals, over any game.</p>
+      </a>
+      <a href="#accounts">
+        <span class="new"><span data-l="ar">جديد</span><span data-l="en">NEW</span></span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c.8-3.2 3.2-5 6-5s5.2 1.8 6 5"/><path d="M16 4.5a3.2 3.2 0 0 1 0 6.4M18 14c1.6.7 2.6 2.4 3 5"/></svg>
+        <h3><span data-l="ar">تبديل الحسابات</span><span data-l="en">ACCOUNT SWITCHER</span></h3>
+        <p data-l="ar">حسابات Steam وBattle.net بضغطة، مع نسخة احتياطية مقفولة بكلمة سر.</p>
+        <p data-l="en">Steam and Battle.net accounts in one click, with a backup locked by a password.</p>
       </a>
       <a href="#characters">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
@@ -296,8 +321,8 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
       <a href="#tools">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.4-2.4z"/></svg>
         <h3><span data-l="ar">أدوات النظام</span><span data-l="en">SYSTEM TOOLS</span></h3>
-        <p data-l="ar">تعزيز اللعب، برامج بدء التشغيل، تنظيف الملفات المؤقتة، وفحص الشبكة.</p>
-        <p data-l="en">Game boost, startup apps, temp clean-up and a network check.</p>
+        <p data-l="ar">تعزيز اللعب، برامج بدء التشغيل، التنظيف، الشبكة، وتقرير للذكاء الاصطناعي.</p>
+        <p data-l="en">Game boost, startup apps, clean-up, network, and a report for AI.</p>
       </a>
       <a href="#install">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
@@ -372,6 +397,28 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
   </div>
 </section>
 
+<section class="band" id="subtitles">
+  <div class="wrap split">
+    <div class="intro">
+      <div class="eyebrow"><span data-l="ar">ترجمة الأفلام</span><span data-l="en">Film subtitles</span></div>
+      <h2><span data-l="ar">أي فيلم أو مسلسل، بترجمة عربية</span><span data-l="en">ANY FILM OR SHOW, WITH ARABIC SUBTITLES</span></h2>
+      <ul class="ticks" data-l="ar">
+        <li><span><b>اسحب ملف SRT</b> الإنجليزي على 140، ويطلع لك جنبه ملف <span class="num">ar.srt</span> عربي.</span></li>
+        <li><span>نفس مترجم الشاشة: على جهازك وبدون إنترنت، وما يُرسل شيء لأي مكان.</span></li>
+        <li><span><b>جاهز لـ Stremio:</b> شغّل الفيلم واسحب الملف العربي على الفيديو. ويشتغل في VLC بعد.</span></li>
+        <li><span>يقول لك كم باقي وهو يترجم، وتقدر توقفه بأي وقت.</span></li>
+      </ul>
+      <ul class="ticks" data-l="en">
+        <li><span><b>Drop an English .srt</b> on 140 and an Arabic <span class="num">.ar.srt</span> appears next to it.</span></li>
+        <li><span>The same translator as the screen one: on your PC, offline, nothing sent anywhere.</span></li>
+        <li><span><b>Ready for Stremio:</b> play the film and drag the Arabic file onto the video. VLC works too.</span></li>
+        <li><span>It tells you how long is left while it works, and you can stop it any time.</span></li>
+      </ul>
+    </div>
+    <div class="shot"><img data-shot="subtitles" src="img/app/ar-subtitles.jpg" alt="" width="1920" height="1024" loading="lazy" decoding="async"></div>
+  </div>
+</section>
+
 <section class="band" id="crosshair">
   <div class="wrap">
     <div class="intro">
@@ -405,19 +452,40 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
   </div>
 </section>
 
+<section class="band" id="accounts">
+  <div class="wrap split flip">
+    <div class="intro">
+      <div class="eyebrow"><span data-l="ar">الحسابات</span><span data-l="en">Accounts</span></div>
+      <h2><span data-l="ar">كل حساباتك، بضغطة وحدة</span><span data-l="en">EVERY ACCOUNT, ONE CLICK AWAY</span></h2>
+      <ul class="ticks" data-l="ar">
+        <li><span><b>Steam وBattle.net:</b> تختار الحساب وتضغط «التبديل»، و140 يقفل البرنامج ويفتحه على الحساب.</span></li>
+        <li><span><b>يجيب حساباتك لحاله:</b> من Steam وBattle.net، وحتى من TcNo Account Switcher إذا عندك.</span></li>
+        <li><span><b>إضافة حساب Battle.net:</b> يفتح لك تسجيل دخول جديد، وأول ما تدخل يحفظ الإيميل واسم اللاعب.</span></li>
+        <li><span><b>بطاقة لكل حساب:</b> الإيميل والباسورد والملاحظات، مقفولة على جهازك. زر «نسخ» يمسح الباسورد من الحافظة بعد 30 ثانية.</span></li>
+        <li><span><b>نسخة احتياطية:</b> ملف واحد مقفول بكلمة سر تختارها، يرجّع كل حساباتك بعد الفرمتة.</span></li>
+      </ul>
+      <ul class="ticks" data-l="en">
+        <li><span><b>Steam and Battle.net:</b> pick the account, press Switch, and 140 restarts the client on it.</span></li>
+        <li><span><b>Finds your accounts:</b> from Steam and Battle.net, and from TcNo Account Switcher if you have it.</span></li>
+        <li><span><b>Add a Battle.net account:</b> it opens a fresh sign-in and saves the email and BattleTag as soon as you sign in.</span></li>
+        <li><span><b>A card per account:</b> email, password and notes, locked on your PC. COPY clears the password from the clipboard after 30 seconds.</span></li>
+        <li><span><b>Locked backup:</b> one file behind a password you choose brings every account back after a reinstall.</span></li>
+      </ul>
+    </div>
+    <div class="shot"><img data-shot="accounts" src="img/app/ar-accounts.jpg" alt="" width="1920" height="1024" loading="lazy" decoding="async"></div>
+  </div>
+</section>
+
 <section class="band" id="characters">
   <div class="wrap">
     <div class="intro">
       <div class="eyebrow"><span data-l="ar">الشخصيات</span><span data-l="en">Characters</span></div>
       <h2><span data-l="ar">البرنامج كله ياخذ لون شخصيتك</span><span data-l="en">THE WHOLE APP WEARS YOUR CHARACTER</span></h2>
-      <p data-l="ar">كل شخصية تغيّر ألوان البرنامج، وصوت النقرات، والموسيقى، وحركة التشغيل لما تضغط «تشغيل». اضغط على أي وحدة هنا وشوف.</p>
-      <p data-l="en">Each character changes the app's colours, click sounds, music and the launch scene when you press Launch. Tap one here to see.</p>
+      <p data-l="ar">كل شخصية تغيّر صورة البرنامج وألوانه، وصوت النقرات، والموسيقى، وحركة التشغيل لما تضغط «تشغيل». اضغط على أي وحدة هنا، والموقع كله يلبسها مثل البرنامج.</p>
+      <p data-l="en">Each character changes the app's picture and colours, click sounds, music and the launch scene when you press Launch. Tap one here and the whole site wears it, like the app.</p>
     </div>
     <div class="cast" id="cast"></div>
-    <div class="shot">
-      <img data-l="ar" src="img/ar-character.jpg" alt="صفحة الشخصيات" width="1200" height="640" loading="lazy">
-      <img data-l="en" src="img/en-character.jpg" alt="The character page" width="1200" height="640" loading="lazy">
-    </div>
+    <div class="shot"><img data-shot="character" src="img/app/ar-yuro-character.jpg" alt="" width="1920" height="1024" loading="lazy" decoding="async"></div>
     <div class="intro">
       <h3 style="font-size:28px"><span data-l="ar">لكل شخصية تشغيل خاص</span><span data-l="en">EVERY CHARACTER HAS ITS OWN LAUNCH</span></h3>
       <p data-l="ar">يورو يقطع الشاشة بضربة حبر، هانا تفتح زهرة، مومو تمشي بآثار أقدام، توجي يطلع بهالة، ولوسي تدخل الشبكة بفيديو كامل.</p>
@@ -448,7 +516,8 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
       <div><b>التنظيف</b><span>يمسح الملفات المؤقتة القديمة.</span></div>
       <div><b>الشبكة</b><span>يقيس الاستجابة ويمسح ذاكرة DNS.</span></div>
       <div><b>وضع الألعاب ونقطة الاستعادة</b><span>يفتح لك إعدادات ويندوز مباشرة.</span></div>
-      <div><b>تقرير للذكاء الاصطناعي</b><span>ملف عن آخر جلسة لعب تعطيه لأي مساعد عشان يحلل التقطيع.</span></div>
+      <div><b>تقرير للذكاء الاصطناعي</b><span>ملف عن آخر جلسة لعب، فيه التقطيع والبرامج وسرعة النت واستهلاكه، تعطيه لأي مساعد يحلل لك اللاق.</span></div>
+      <div><b>تحديث تلقائي</b><span>إذا نزلت نسخة جديدة ينزل لك شريط «تحديث»، ضغطة وحدة ويتحدث.</span></div>
     </div>
     <div class="tools" data-l="en">
       <div><b>Game boost</b><span>The High performance plan while 140 runs; your plan comes back when you exit.</span></div>
@@ -456,7 +525,8 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
       <div><b>Clean-up</b><span>Removes old temporary files.</span></div>
       <div><b>Network</b><span>Measures response time and flushes the DNS cache.</span></div>
       <div><b>Game Mode and restore point</b><span>Opens the right Windows settings.</span></div>
-      <div><b>Report for AI</b><span>A file about your last session to hand to any assistant to explain stutters.</span></div>
+      <div><b>Report for AI</b><span>A file about your last session, with stutters, programs and your network speed and use, for any assistant to explain lag.</span></div>
+      <div><b>Updates itself</b><span>When a new version is out an Update bar drops in: one click and it's done.</span></div>
     </div>
   </div>
 </section>
@@ -513,6 +583,11 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
         <p data-l="en">It needs English (United States) added in the Windows language settings.</p>
       </details>
       <details>
+        <summary><span data-l="ar">هل باسوردات حساباتي آمنة؟</span><span data-l="en">Are my account passwords safe?</span></summary>
+        <p data-l="ar">البطاقات تنحفظ في جهازك بس، مقفولة بقفل ويندوز نفسه: ما يفتحها إلا حسابك في ويندوز على نفس الجهاز، وما تطلع لأي مكان. والنسخة الاحتياطية مقفولة بكلمة سر تختارها أنت (AES-256)، وإذا نسيتها ما أحد يقدر يفتح الملف، ولا حتى 140. التبديل نفسه ما يكتب أي باسورد: يغيّر بس الحساب اللي Steam أو Battle.net يفتح عليه.</p>
+        <p data-l="en">The cards stay on your PC, locked with Windows' own protection: only your Windows account on that PC can open them, and they go nowhere. The backup is locked with a password you choose (AES-256); forget it and nobody can open the file, not even 140. Switching never types a password: it only changes which account Steam or Battle.net opens with.</p>
+      </details>
+      <details>
         <summary><span data-l="ar">كيف أحدّث البرنامج؟</span><span data-l="en">How do I update?</span></summary>
         <p data-l="ar">من نسخة v19 وطالع، 140 يحدّث نفسه: إذا نزلت نسخة جديدة ينزل لك شريط من فوق فيه زر «تحديث»، تضغطه ويحمّل ويرجع يفتح لحاله. إعداداتك وعلاماتك المحفوظة تبقى، وأي ملف عدلته بنفسك ما يتغير. إذا عندك نسخة أقدم، حمّل <span class="num">140.exe</span> من هنا مرة وحدة وحطه مكان القديم.</p>
         <p data-l="en">From v19 on, 140 updates itself: when a new version is out, a bar drops from the top with an "Update" button; press it and 140 downloads and restarts by itself. Your settings and saved crosshairs stay, and files you edited yourself are left alone. On an older copy, download <span class="num">140.exe</span> here once and put it over the old one.</p>
@@ -535,7 +610,7 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
 
 <footer>
   <div class="wrap">
-    <span>140 <span class="num">v18</span></span>
+    <span>140 <span class="num">v23</span></span>
     <span data-l="ar">الترجمة بنموذج OPUS-MT (Apache 2.0)، مع OpenBLAS وruy. ملفات الرخص تنزل مع البرنامج.</span>
     <span data-l="en">Translation by the OPUS-MT model (Apache 2.0), with OpenBLAS and ruy. Licence files come with the app.</span>
   </div>
@@ -725,11 +800,36 @@ function light(hex) { const v = parseInt(hex.slice(1), 16); return ((v >> 16) * 
 function renderCast() {
   const ar = root.lang === "ar";
   document.getElementById("chars").innerHTML = CHARS.map(c =>
-    `<button type="button" data-c="${c.id}" aria-pressed="${c === current}" style="--c:${c.ink};--p:${c.paper}"><i></i>${c.name}</button>`).join("");
+    `<button type="button" data-c="${c.id}" aria-pressed="${c === current}" style="--c:${c.ink};--p:${c.paper};--f:url(img/app/face-${c.id}.jpg)"><i></i>${c.name}</button>`).join("");
   document.getElementById("cast").innerHTML = CHARS.map(c =>
-    `<button type="button" data-c="${c.id}" aria-pressed="${c === current}" style="--c:${c.ink};--p:${c.paper}"><b>${c.name}</b><small>${ar ? c.ar : c.en}</small></button>`).join("");
+    `<button type="button" data-c="${c.id}" aria-pressed="${c === current}" style="--c:${c.ink};--p:${c.paper}">` +
+    `<img src="img/app/face-${c.id}.jpg" alt="" width="250" height="340" loading="lazy" decoding="async"><span><b>${c.name}</b><small>${ar ? c.ar : c.en}</small></span></button>`).join("");
   document.querySelectorAll("[data-c]").forEach(b => b.onclick = () => pickChar(b.dataset.c));
+  showShots();
 }
+
+// The app's own screenshots follow the character and the language: the home and character pages
+// wear the picked character; the others are shown in YURO. A picture fades out, loads, fades in.
+function shotSrc(kind) {
+  const l = root.lang === "ar" ? "ar" : "en";
+  return kind === "home" || kind === "character" ? `img/app/${l}-${current.id}-${kind}.jpg` : `img/app/${l}-${kind}.jpg`;
+}
+function showShots() {
+  document.querySelectorAll("img[data-shot]").forEach(img => {
+    const src = shotSrc(img.dataset.shot);
+    img.alt = root.lang === "ar" ? `140 مع ${current.name}` : `140 with ${current.name}`;
+    if (img.getAttribute("src") === src) return;
+    if (still) { img.src = src; return; }
+    img.classList.add("swap");
+    const next = new Image();
+    next.onload = next.onerror = () => { img.src = src; requestAnimationFrame(() => img.classList.remove("swap")); };
+    next.src = src;
+  });
+}
+// The other characters' home pictures are fetched once the page has settled, so a pick is instant.
+addEventListener("load", () => setTimeout(() => {
+  for (const c of CHARS) { const i = new Image(); i.src = `img/app/${root.lang === "ar" ? "ar" : "en"}-${c.id}-home.jpg`; }
+}, 1200));
 function pickChar(id, quiet) {
   const before = current;
   current = CHARS.find(c => c.id === id) || CHARS[0];

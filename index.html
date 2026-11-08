@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>140</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="140: إحصائيات فوق اللعبة، مترجم شاشة وترجمة أفلام بدون إنترنت، علامة تصويب بإعدادات Marvel Rivals، تبديل حسابات Steam وBattle.net، وشخصيات بموسيقاها. لويندوز.">
+<meta name="description" content="140: الطبيب يحل كراش Out of memory، إحصائيات فوق اللعبة، مترجم شاشة وترجمة أفلام بدون إنترنت، علامة تصويب بإعدادات Marvel Rivals، تبديل حسابات Steam وBattle.net، وشخصيات بموسيقاها. لويندوز.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Readex+Pro:wght@300;400;500;700&family=Teko:wght@500;600;700&display=swap">
@@ -184,6 +184,22 @@ html[lang="ar"] .six .new { font: 400 13px/1 var(--display-ar); padding: 5px 8px
 .reel figcaption { font-size: 12px; color: var(--ink-2); }
 
 /* tools list */
+.doc { border: 1.5px solid var(--line); background: var(--plate); box-shadow: 14px 14px 0 -2px var(--line); padding: 22px; display: grid; gap: 18px; min-width: 0; }
+.doc .head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+.doc .head b { font-size: 22px; }
+html[lang="ar"] .doc .head b { font-family: var(--display-ar); font-weight: 400; }
+html[lang="en"] .doc .head b { font-family: var(--display-en); font-weight: 600; letter-spacing: .02em; }
+.doc .row { display: grid; gap: 7px; }
+.doc .top { display: flex; justify-content: space-between; gap: 12px; color: var(--ink); font-weight: 500; }
+.doc .top .num { direction: ltr; unicode-bidi: isolate; font-size: 20px; line-height: 1.2; white-space: nowrap; }
+.doc .bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.doc .bar i { display: block; height: 100%; width: var(--w); background: var(--ink); border-radius: 3px; }
+.doc .ok { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+.doc .ok::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #3ddc6e; flex: none; }
+.doc .small { color: var(--ink-2); font-size: 14px; }
+.doc .warn { border: 1.5px solid #ff4655; color: #ff4655; padding: 12px 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.doc .warn small { display: block; color: var(--ink-2); font-size: 13px; }
+.doc .btn { border: 1.5px solid currentColor; padding: 3px 14px; border-radius: 6px; font-weight: 500; white-space: nowrap; }
 .tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); border-top: 1.5px solid var(--ink); }
 .tools div { padding: 16px 0; border-bottom: 1px solid var(--line); display: grid; gap: 4px; padding-inline-end: 18px; }
 .tools b { font-weight: 500; }
@@ -277,9 +293,16 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
   <div class="wrap">
     <div class="intro">
       <div class="eyebrow"><span data-l="ar">داخل البرنامج</span><span data-l="en">Inside the app</span></div>
-      <h2><span data-l="ar">ثمانية أشياء في ملف واحد</span><span data-l="en">EIGHT THINGS IN ONE FILE</span></h2>
+      <h2><span data-l="ar">اثنا عشر شيئًا في ملف واحد</span><span data-l="en">TWELVE THINGS IN ONE FILE</span></h2>
     </div>
     <div class="six">
+      <a href="#doctor">
+        <span class="new"><span data-l="ar">جديد</span><span data-l="en">NEW</span></span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg>
+        <h3><span data-l="ar">الطبيب</span><span data-l="en">THE DOCTOR</span></h3>
+        <p data-l="ar">يعرف ليش تكرش ألعابك: Out of memory، المودات، كرت الشاشة. ويصلح اللي بيد ويندوز بضغطة.</p>
+        <p data-l="en">Finds why your games crash: out of memory, mods, the graphics card. Fixes what Windows can, in one click.</p>
+      </a>
       <a href="#overlay">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l5-6 4 3 4-6 5 5"/><path d="M3 21h18"/></svg>
         <h3><span data-l="ar">الإحصائيات فوق اللعبة</span><span data-l="en">STATS OVERLAY</span></h3>
@@ -293,7 +316,6 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
         <p data-l="en">Reads the English in the game and writes the Arabic in its place, on your PC, offline.</p>
       </a>
       <a href="#subtitles">
-        <span class="new"><span data-l="ar">جديد</span><span data-l="en">NEW</span></span>
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 13h4M13 13h4M7 16h7"/></svg>
         <h3><span data-l="ar">ترجمة الأفلام</span><span data-l="en">FILM SUBTITLES</span></h3>
         <p data-l="ar">تحط ملف ترجمة إنجليزي ويطلع لك ملف عربي جاهز لـ Stremio وVLC.</p>
@@ -306,17 +328,22 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
         <p data-l="en">The same settings and the same code as Marvel Rivals, over any game.</p>
       </a>
       <a href="#accounts">
-        <span class="new"><span data-l="ar">جديد</span><span data-l="en">NEW</span></span>
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c.8-3.2 3.2-5 6-5s5.2 1.8 6 5"/><path d="M16 4.5a3.2 3.2 0 0 1 0 6.4M18 14c1.6.7 2.6 2.4 3 5"/></svg>
         <h3><span data-l="ar">تبديل الحسابات</span><span data-l="en">ACCOUNT SWITCHER</span></h3>
         <p data-l="ar">حسابات Steam وBattle.net بضغطة، مع نسخة احتياطية مقفولة بكلمة سر.</p>
         <p data-l="en">Steam and Battle.net accounts in one click, with a backup locked by a password.</p>
       </a>
+      <a href="#hotspot">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0M8 15.5a5.5 5.5 0 0 1 8 0"/><circle cx="12" cy="19" r="1.4"/></svg>
+        <h3><span data-l="ar">الهوتسبوت</span><span data-l="en">HOTSPOT</span></h3>
+        <p data-l="ar">حوّل جهازك لشبكة واي فاي بضغطة، وجوالك يدخل بكود QR.</p>
+        <p data-l="en">Turn your PC into a Wi-Fi network in one click; your phone joins with a QR code.</p>
+      </a>
       <a href="#characters">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
         <h3><span data-l="ar">الشخصيات</span><span data-l="en">CHARACTERS</span></h3>
-        <p data-l="ar">خمس شخصيات، لكل وحدة ألوانها وأصواتها وموسيقاها وحركة تشغيل خاصة فيها.</p>
-        <p data-l="en">Five characters, each with its own colours, sounds, music and launch scene.</p>
+        <p data-l="ar">ست شخصيات، لكل وحدة ألوانها وأصواتها وموسيقاها وحركة تشغيل خاصة فيها.</p>
+        <p data-l="en">Six characters, each with its own colours, sounds, music and launch scene.</p>
       </a>
       <a href="#tools">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.4-2.4z"/></svg>
@@ -324,12 +351,71 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
         <p data-l="ar">تعزيز اللعب، برامج بدء التشغيل، التنظيف، الشبكة، وتقرير للذكاء الاصطناعي.</p>
         <p data-l="en">Game boost, startup apps, clean-up, network, and a report for AI.</p>
       </a>
+      <a href="#tools">
+        <span class="new"><span data-l="ar">جديد</span><span data-l="en">NEW</span></span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/><path d="M12 7v5l3 2"/></svg>
+        <h3><span data-l="ar">اختر نسختك</span><span data-l="en">PICK YOUR VERSION</span></h3>
+        <p data-l="ar">ارجع لأي نسخة قبل أو حدّث للأحدث بضغطة، وإعداداتك تبقى.</p>
+        <p data-l="en">Go back to any earlier version or up to the newest in one click; your settings stay.</p>
+      </a>
+      <a href="#tools">
+        <span class="new"><span data-l="ar">جديد</span><span data-l="en">NEW</span></span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v8"/><path d="M6.3 6.3a8 8 0 1 0 11.4 0"/></svg>
+        <h3><span data-l="ar">تشغيل على كيفك</span><span data-l="en">START YOUR WAY</span></h3>
+        <p data-l="ar">عادي أو كمسؤول دايم بدون ما يسأل، ومع تشغيل الجهاز إذا تبي.</p>
+        <p data-l="en">Regular, or always as administrator with no prompt, and with Windows if you like.</p>
+      </a>
       <a href="#install">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
         <h3><span data-l="ar">خفيف وما يلمس اللعبة</span><span data-l="en">LIGHT, HANDS OFF</span></h3>
         <p data-l="ar">نوافذ عادية فوق الشاشة. ما يحقن شيء في اللعبة ولا يقرأ ذاكرتها.</p>
         <p data-l="en">Plain windows over the screen. Nothing is injected and no game memory is read.</p>
       </a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="doctor">
+  <div class="wrap split">
+    <div class="intro">
+      <div class="eyebrow"><span data-l="ar">الطبيب</span><span data-l="en">The doctor</span></div>
+      <h2><span data-l="ar">لعبتك تكرش؟ الطبيب يقول لك ليش</span><span data-l="en">GAME CRASHING? THE DOCTOR TELLS YOU WHY</span></h2>
+      <ul class="ticks" data-l="ar">
+        <li><span><b>Out of memory:</b> يفحص ملف الصفحات (الذاكرة الاحتياطية في ويندوز) ويضبطه بحجم ثابت بضغطة، وزر «رجوع للقديم» يرجّعه.</span></li>
+        <li><span><b>آخر كراش:</b> يقرأ تقرير الكراش اللي كتبته اللعبة ويقول السبب بالعربي: الذاكرة، كرت الشاشة، أو ملفات اللعبة، مع عمر التعريف وكم باقي من الذاكرة وقتها.</span></li>
+        <li><span><b>مودات داخل الألعاب:</b> يكشف ملفات الحقن مثل ASI Loader وUE4SS والمودات، وإذا كانت في لعبة أونلاين يحذرك من الكراش والباند وينقلها لمجلد احتياطي بضغطة. ومودات الألعاب الأوفلاين ما يلمسها.</span></li>
+        <li><span><b>مساحة القرص:</b> ينبهك إذا القرص ممتلي وملف الصفحات ما يقدر يكبر.</span></li>
+        <li><span><b>منظّف الذاكرة الاحتياطية</b> (مثل ISLC) وقت اللعب، وتنبيه قبل ما تخلص الذاكرة.</span></li>
+        <li><span><b>تقرير للذكاء الاصطناعي:</b> الذاكرة ثانية بثانية مع البرنامج اللي قدامك وأكثر برنامج ياكل رام، لأي ذكاء يدرسه ويعطيك الحل.</span></li>
+      </ul>
+      <ul class="ticks" data-l="en">
+        <li><span><b>Out of memory:</b> checks the page file (Windows' reserve memory) and sets a fixed size in one click; UNDO puts it back.</span></li>
+        <li><span><b>Last crash:</b> reads the game's own crash report and says why: memory, the graphics card or the game's files, with the driver's age and the memory left at that moment.</span></li>
+        <li><span><b>Mods inside games:</b> finds injected files like ASI Loader, UE4SS and mod folders; in an online game it warns about crashes and bans, and moves them to a backup folder in one click. Offline games' mods are left alone.</span></li>
+        <li><span><b>Disk space:</b> warns when the drive is too full for the page file to grow.</span></li>
+        <li><span><b>A standby memory cleaner</b> (like ISLC) while you play, and a warning before memory runs out.</span></li>
+        <li><span><b>A report for AI:</b> memory second by second, with the program in front and the biggest one, for any AI to study and fix.</span></li>
+      </ul>
+      <p data-l="ar">وما يلمس اللعبة: كل المعلومات من ويندوز ومن ملفات الكراش، والمودات يعرفها من أسماء الملفات بس.</p>
+      <p data-l="en">And it never touches the game: everything comes from Windows and the crash files, and mods are found by file name only.</p>
+    </div>
+    <div class="doc" role="img" aria-label="A sample of the doctor page">
+      <div class="head"><b><span data-l="ar">الطبيب</span><span data-l="en">DOCTOR</span></b><span class="small"><span data-l="ar">بعد الإصلاح</span><span data-l="en">after the fix</span></span></div>
+      <div class="row">
+        <div class="top"><span data-l="ar">الذاكرة المحجوزة (الرام + ملف الصفحات)</span><span data-l="en">Committed (RAM + page file)</span><span class="num">22.1 / 47.8 GB</span></div>
+        <div class="bar" style="--w:46%"><i></i></div>
+        <div class="small"><span data-l="ar">قبل الإصلاح كانت 28.7 من 31.8 وتكرش اللعبة.</span><span data-l="en">Before the fix: 28.7 of 31.8, and the game crashed.</span></div>
+      </div>
+      <div class="ok"><span data-l="ar">ملف الصفحات: حجم ثابت، 32 جيجا</span><span data-l="en">Page file: fixed size, 32 GB</span></div>
+      <div class="warn">
+        <span><span data-l="ar">مودات وحقن داخل الألعاب</span><span data-l="en">Mods inside games</span>
+          <small><span data-l="ar">3 في ألعاب أونلاين: تكرّش وفيها خطر باند.</span><span data-l="en">3 in online games: crashes and ban risk.</span></small></span>
+        <span class="btn"><span data-l="ar">شيلها</span><span data-l="en">REMOVE</span></span>
+      </div>
+      <div class="row">
+        <div class="top"><span data-l="ar">آخر كراش للعبة</span><span data-l="en">Last game crash</span></div>
+        <div class="small"><span data-l="ar">السبب: الرام خلصت (Out of memory). الحل من هنا: كبّر ملف الصفحات، وسكّر البرامج الثقيلة قبل اللعب.</span><span data-l="en">Cause: out of memory. Fix it here: a bigger page file, and close heavy programs before you play.</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -476,6 +562,31 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
   </div>
 </section>
 
+<section class="band" id="hotspot">
+  <div class="wrap">
+    <div class="intro">
+      <div class="eyebrow"><span data-l="ar">الهوتسبوت</span><span data-l="en">Hotspot</span></div>
+      <h2><span data-l="ar">جهازك صار راوتر</span><span data-l="en">YOUR PC IS THE ROUTER NOW</span></h2>
+    </div>
+    <div class="tools" data-l="ar">
+      <div><b>بضغطة</b><span>تشغّل شبكة واي فاي من جهازك، وتطفيها بضغطة.</span></div>
+      <div><b>كود QR</b><span>صوّره بالجوال ويدخل الشبكة على طول، بدون ما تكتب الباسورد.</span></div>
+      <div><b>الاسم والباسورد</b><span>تختارهم، أو يطلّع لك باسورد قوي جديد.</span></div>
+      <div><b>يبقى شغّال</b><span>إذا ويندوز طفاه يرجّعه لحاله، ويقدر يشتغل مع 140.</span></div>
+      <div><b>تنبيه</b><span>يقول لك إذا جهاز جديد دخل الشبكة.</span></div>
+      <div><b>النطاق</b><span>2.4 أو 5 جيجاهرتز أو تلقائي، والسرعة تشوفها مباشرة.</span></div>
+    </div>
+    <div class="tools" data-l="en">
+      <div><b>One click</b><span>Starts a Wi-Fi network from your PC, and stops it.</span></div>
+      <div><b>QR code</b><span>Scan it with your phone and it joins, no password to type.</span></div>
+      <div><b>Name and password</b><span>Pick your own, or get a strong new password.</span></div>
+      <div><b>Stays on</b><span>If Windows turns it off it comes back, and it can start with 140.</span></div>
+      <div><b>Alerts</b><span>Tells you when a new device joins.</span></div>
+      <div><b>Band</b><span>2.4 or 5 GHz or automatic, with the live speed.</span></div>
+    </div>
+  </div>
+</section>
+
 <section class="band" id="characters">
   <div class="wrap">
     <div class="intro">
@@ -488,8 +599,8 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
     <div class="shot"><img data-shot="character" src="img/app/ar-yuro-character.jpg" alt="" width="1920" height="1024" loading="lazy" decoding="async"></div>
     <div class="intro">
       <h3 style="font-size:28px"><span data-l="ar">لكل شخصية تشغيل خاص</span><span data-l="en">EVERY CHARACTER HAS ITS OWN LAUNCH</span></h3>
-      <p data-l="ar">يورو يقطع الشاشة بضربة حبر، هانا تفتح زهرة، مومو تمشي بآثار أقدام، توجي يطلع بهالة، ولوسي تدخل الشبكة بفيديو كامل.</p>
-      <p data-l="en">Yuro cuts the screen with an ink stroke, Hana opens a bloom, Momo walks in paw prints, Toji rises in an aura, and Lucy dives into the net with a full video.</p>
+      <p data-l="ar">يورو يقطع الشاشة بضربة حبر، هانا تفتح زهرة، مومو تمشي بآثار أقدام، توجي يطلع بهالة، لوسي تدخل الشبكة بفيديو كامل، وماغنا يدخل بفيديو وكل نقرة منه لكمة نار.</p>
+      <p data-l="en">Yuro cuts the screen with an ink stroke, Hana opens a bloom, Momo walks in paw prints, Toji rises in an aura, Lucy dives into the net with a full video, and Magna storms in with his own video and a fire punch on every click.</p>
     </div>
     <div class="reel">
       <figure><img src="img/launch-1.jpg" alt="" loading="lazy" width="1200" height="640"><figcaption class="num">0:01</figcaption></figure>
@@ -517,7 +628,9 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
       <div><b>الشبكة</b><span>يقيس الاستجابة ويمسح ذاكرة DNS.</span></div>
       <div><b>وضع الألعاب ونقطة الاستعادة</b><span>يفتح لك إعدادات ويندوز مباشرة.</span></div>
       <div><b>تقرير للذكاء الاصطناعي</b><span>ملف عن آخر جلسة لعب، فيه التقطيع والبرامج وسرعة النت واستهلاكه، تعطيه لأي مساعد يحلل لك اللاق.</span></div>
-      <div><b>تحديث تلقائي</b><span>إذا نزلت نسخة جديدة ينزل لك شريط «تحديث»، ضغطة وحدة ويتحدث.</span></div>
+      <div><b>تحديث تلقائي</b><span>إذا نزلت نسخة جديدة ينزل لك شريط «تحديث»، ضغطة وحدة ويتحدث. وتقدر تطفي التنبيه.</span></div>
+      <div><b>اختر نسختك</b><span>كل النسخ من v19 لين الأحدث بتاريخها. ارجع لأي وحدة أو حدّث، وإعداداتك وشخصياتك تبقى.</span></div>
+      <div><b>تشغيل 140</b><span>عادي، أو كمسؤول دايم: ويندوز يسأل مرة وحدة بس وبعدها ما يسأل. ومع تشغيل الجهاز إذا تبي.</span></div>
     </div>
     <div class="tools" data-l="en">
       <div><b>Game boost</b><span>The High performance plan while 140 runs; your plan comes back when you exit.</span></div>
@@ -526,7 +639,9 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
       <div><b>Network</b><span>Measures response time and flushes the DNS cache.</span></div>
       <div><b>Game Mode and restore point</b><span>Opens the right Windows settings.</span></div>
       <div><b>Report for AI</b><span>A file about your last session, with stutters, programs and your network speed and use, for any assistant to explain lag.</span></div>
-      <div><b>Updates itself</b><span>When a new version is out an Update bar drops in: one click and it's done.</span></div>
+      <div><b>Updates itself</b><span>When a new version is out an Update bar drops in: one click and it's done. The alert can be turned off.</span></div>
+      <div><b>Pick your version</b><span>Every version from v19 to the newest, with its date. Go back to any or update; settings and characters stay.</span></div>
+      <div><b>Starting 140</b><span>Regular, or always as administrator: Windows asks once and never again. And with Windows if you like.</span></div>
     </div>
   </div>
 </section>
@@ -564,8 +679,8 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
     <div class="faq">
       <details>
         <summary><span data-l="ar">هل يلمس اللعبة؟</span><span data-l="en">Does it touch the game?</span></summary>
-        <p data-l="ar">كل شيء في 140 نوافذ عادية فوق الشاشة، مثل أي برنامج تسجيل أو ديسكورد. ما يحقن ملفات في اللعبة، ولا يقرأ ذاكرتها، ولا يستخدم درايفر.</p>
-        <p data-l="en">Everything in 140 is a plain window over the screen, like a recorder or Discord. It injects nothing into the game, reads no game memory and uses no driver.</p>
+        <p data-l="ar">كل شيء في 140 نوافذ عادية فوق الشاشة، مثل أي برنامج تسجيل أو ديسكورد. ما يحقن ملفات في اللعبة، ولا يقرأ ذاكرتها، ولا يستخدم درايفر. والطبيب ياخذ معلوماته من ويندوز ومن ملفات الكراش، وما يحرّك أي ملف إلا إذا ضغطت أنت واللعبة مسكّرة.</p>
+        <p data-l="en">Everything in 140 is a plain window over the screen, like a recorder or Discord. It injects nothing into the game, reads no game memory and uses no driver. The doctor reads Windows and the crash files, and moves a file only when you press the button with the game closed.</p>
       </details>
       <details>
         <summary><span data-l="ar">علامة التصويب أو الإحصائيات ما تظهر فوق اللعبة</span><span data-l="en">The crosshair or stats do not show over the game</span></summary>
@@ -574,8 +689,8 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
       </details>
       <details>
         <summary><span data-l="ar">عداد الفريمات ما يشتغل</span><span data-l="en">The FPS counter shows nothing</span></summary>
-        <p data-l="ar">يحتاج صلاحية مسؤول. اضغط «تفعيل عداد الفريمات» في الرئيسية مرة وحدة.</p>
-        <p data-l="en">It needs administrator rights. Press "Enable FPS counter" on the home page once.</p>
+        <p data-l="ar">يحتاج صلاحية مسؤول. اضغط «تفعيل عداد الفريمات» في الرئيسية، أو من «أدوات النظام» اختر «كمسؤول دايم» ويشتغل كل مرة بدون ما يسألك.</p>
+        <p data-l="en">It needs administrator rights. Press "Enable FPS counter" on the home page, or pick "As administrator" in System tools and it works every time without a prompt.</p>
       </details>
       <details>
         <summary><span data-l="ar">المترجم ما يقرأ شيء</span><span data-l="en">The translator reads nothing</span></summary>
@@ -592,6 +707,16 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
         <p data-l="ar">من نسخة v19 وطالع، 140 يحدّث نفسه: إذا نزلت نسخة جديدة ينزل لك شريط من فوق فيه زر «تحديث»، تضغطه ويحمّل ويرجع يفتح لحاله. إعداداتك وعلاماتك المحفوظة تبقى، وأي ملف عدلته بنفسك ما يتغير. إذا عندك نسخة أقدم، حمّل <span class="num">140.exe</span> من هنا مرة وحدة وحطه مكان القديم.</p>
         <p data-l="en">From v19 on, 140 updates itself: when a new version is out, a bar drops from the top with an "Update" button; press it and 140 downloads and restarts by itself. Your settings and saved crosshairs stay, and files you edited yourself are left alone. On an older copy, download <span class="num">140.exe</span> here once and put it over the old one.</p>
       </details>
+      <details>
+        <summary><span data-l="ar">أقدر أرجع لنسخة أقدم؟</span><span data-l="en">Can I go back to an older version?</span></summary>
+        <p data-l="ar">إي. من «أدوات النظام» ← «نسخة 140» ← «اختيار»، تطلع لك كل النسخ من v19 بتاريخها. تختار وحدة و140 ينزّلها ويعيد التشغيل عليها. وترجع للأحدث من نفس المكان أو من شريط التحديث.</p>
+        <p data-l="en">Yes. In System tools, Version of 140, press Choose: every version from v19 shows with its date. Pick one and 140 downloads it and restarts on it. Come back to the newest from the same place or the update bar.</p>
+      </details>
+      <details>
+        <summary><span data-l="ar">لعبتي تكرش بـ Out of memory</span><span data-l="en">My game crashes with "Out of memory"</span></summary>
+        <p data-l="ar">افتح «الطبيب». إذا ملف الصفحات ضعيف يطلع لك زر «إصلاح ملف الصفحات»: تضغطه وتوافق، وبعدها تعيد تشغيل الجهاز. وإذا القرص ممتلي يقول لك كم تفضّي. ولو كرشت بعدها، اضغط «تقرير للذكاء الاصطناعي» وعطه لأي مساعد ذكي.</p>
+        <p data-l="en">Open the Doctor. If the page file is weak, a "Fix the page file" button shows: press it, approve, and restart the PC. If the drive is too full it tells you how much to free. If it still crashes, press "Report for AI" and hand it to any assistant.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -603,14 +728,14 @@ footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 8px 22p
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13M6 11l6 6 6-6M4 21h16"/></svg>
       <b><span data-l="ar">تحميل لويندوز</span><span data-l="en">DOWNLOAD FOR WINDOWS</span></b>
     </a>
-    <div class="facts"><span data-l="ar">مجاني · 180 ميقا · ويندوز 10 و 11</span><span data-l="en">Free · 180 MB · Windows 10 and 11</span></div>
+    <div class="facts"><span data-l="ar">مجاني · 250 ميقا · ويندوز 10 و 11</span><span data-l="en">Free · 250 MB · Windows 10 and 11</span></div>
   </div>
 </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>140 <span class="num">v23</span></span>
+    <span>140 <span class="num">v30</span></span>
     <span data-l="ar">الترجمة بنموذج OPUS-MT (Apache 2.0)، مع OpenBLAS وruy. ملفات الرخص تنزل مع البرنامج.</span>
     <span data-l="en">Translation by the OPUS-MT model (Apache 2.0), with OpenBLAS and ruy. Licence files come with the app.</span>
   </div>
@@ -629,13 +754,14 @@ document.querySelectorAll("[data-download]").forEach(a => { a.href = DOWNLOAD_UR
 const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
 const root = document.documentElement;
 
-// ---------- the same five characters as the app, with their theme.ini colours ----------
+// ---------- the same six characters as the app, with their theme.ini colours ----------
 const CHARS = [
   { id: "yuro", name: "YURO", ink: "#ffffff", paper: "#08080a", fx: "smoke", ar: "حبر ودخان", en: "Ink and smoke" },
   { id: "hana", name: "HANA", ink: "#c2255c", paper: "#fff5f8", fx: "petals", ar: "بتلات ورد", en: "Petals" },
   { id: "momo", name: "MOMO", ink: "#6b4a3a", paper: "#f6eee3", fx: "paws", ar: "آثار أقدام", en: "Paw prints" },
   { id: "toji", name: "TOJI", ink: "#9bff3c", paper: "#060906", fx: "aura", ar: "هالة", en: "Aura" },
   { id: "lucy", name: "LUCY", ink: "#c4b648", paper: "#0b1022", fx: "cyber", ar: "سايبر", en: "Cyber" },
+  { id: "magna", name: "MAGNA", ink: "#ff4626", paper: "#0a1128", fx: "flame", ar: "لكمة نار", en: "Fire punch" },
 ];
 let current = CHARS[0];
 
@@ -648,7 +774,7 @@ function size() { const d = Math.min(2, devicePixelRatio || 1); fx.width = fx.cl
 function rnd(a, b) { return a + Math.random() * (b - a); }
 function startFx() {
   size();
-  const W = fx.clientWidth, H = fx.clientHeight, n = { smoke: 22, petals: 34, paws: 14, aura: 46, cyber: 34 }[current.fx];
+  const W = fx.clientWidth, H = fx.clientHeight, n = { smoke: 22, petals: 34, paws: 14, aura: 46, cyber: 34, flame: 40 }[current.fx];
   parts = Array.from({ length: n }, (_, i) => ({ x: rnd(0, W), y: rnd(0, H), s: rnd(.4, 1), r: rnd(0, 6.28), v: rnd(.5, 1.5), i }));
   cancelAnimationFrame(raf);
   if (still) { frame(t0 + 1500); return; }
@@ -681,6 +807,10 @@ function frame(t) {
       const age = (s * (.25 + .35 * p.s) + p.i * .137) % 1, y = H + 30 - age * (H + 120), len = 24 + 70 * p.s;
       g.globalAlpha = Math.sin(age * 3.14) * (.12 + .25 * p.s); g.lineWidth = 1 + 2 * p.s;
       g.beginPath(); g.moveTo(p.x, y + len); g.lineTo(p.x + (p.s - .5) * 10, y); g.stroke();
+    } else if (current.fx === "flame") {               // flame: embers rising and flickering out
+      const age = (s * (.18 + .3 * p.s) + p.i * .113) % 1, y = H + 20 - age * (H + 60), x = p.x + Math.sin(s * 2 + p.i) * 12 * age;
+      g.globalAlpha = Math.sin(age * 3.14) * (.2 + .35 * p.s);
+      g.beginPath(); g.arc(x, y, 1.5 + 3.5 * p.s * (1 - age), 0, 6.28); g.fill();
     } else {                                           // cyber: data rain; glitch bands below
       const head = ((s * (120 + 160 * p.s) + p.y) % (H + 160)) - 80;
       for (let k = 0; k < 7; k++) { g.globalAlpha = k === 0 ? .5 : .22 * (1 - k / 7); g.fillRect(p.x, head - k * 14, 2.5, 8); }
